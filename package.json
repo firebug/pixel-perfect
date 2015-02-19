@@ -10,5 +10,6 @@
     "firefox": ">=37.0a2"
   },
   "license": "BSD License",
-  "icon": "chrome://pixelperfect/skin/logo_32x32.png"
+  "icon": "chrome://pixelperfect/skin/logo_32x32.png",
+  "preferences-branch": "pixelperfect"
 }
