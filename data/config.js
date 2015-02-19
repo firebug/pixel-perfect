@@ -4,7 +4,9 @@
 require.config({
   baseUrl: ".",
   paths: {
+    "jquery": "./lib/jquery/jquery.min",
     "react": "./lib/react/react",
+    "bootstrap-slider": "./lib/bootstrap-slider/js/bootstrap-slider",
   }
 });
 

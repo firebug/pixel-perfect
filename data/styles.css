@@ -8,10 +8,80 @@ body {
   padding: 0;
   margin: 0;
   height: 100%;
+  font-size: 12px;
+  font-family: Lucida Grande, Tahoma, sans-serif;
+  line-height: 15px;
 }
 
+/******************************************************************************/
+/* Form */
+
+.form {
+  margin: 8px;
+  margin-top: 35px;
+  padding: 3px;
+  width: 230px;
+}
+
+.form td {
+  padding: 3px;
+}
+
+.form input {
+  size: 5;
+  border: 1px solid lightgray;
+}
+
+.form .buttonBar {
+  padding-top: 18px;
+}
+
+/******************************************************************************/
+/* Overlays */
+
+.overlayBox {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 200px;
+  min-width: 150px;
+}
+
+.overlayCell {
+  padding: 4px;
+}
+
+.overlayImageBox,
 .overlayImage {
   width: 96px;
-  height: 62px;
-  border: 1px solid gray;
+}
+
+.overlayImageBox {
+}
+
+.overlayImageBox:hover {
+  background-image: url("img/close.svg");
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+
+.overlayImage.selected {
+  border: 3px solid rgb(76, 158, 217);
+}
+
+/******************************************************************************/
+/* Slider */
+
+.slider-handle.custom {
+  background-image: url("img/slider.png");
+  background-repeat: no-repeat;
+  background-position: 6px 2px;
+  box-shadow: none;
+}
+
+.slider-handle.custom::before {
+  content: none;
+}
+
+.slider.slider-horizontal {
+  width: 150px;
 }

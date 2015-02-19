@@ -7,7 +7,7 @@ const React = require("react");
 const { Reps } = require("./reps");
 
 // Shortcuts
-const { TABLE, TBODY, TR, TD, INPUT, IMG, THEAD, TH } = Reps.DOM;
+const { TABLE, TBODY, TR, TD, INPUT, IMG, THEAD, TH, DIV } = Reps.DOM;
 
 /**
  * TODO docs
@@ -47,6 +47,7 @@ var OverlayRow = React.createClass({
   render: function() {
     var overlay = this.props.overlay;
     var imageUrl = overlay.url;
+    var selected = overlay.selected ? " selected" : "";
 
     return (
       TR({className: "overlayRow", onClick: this.onClick},
@@ -54,7 +55,9 @@ var OverlayRow = React.createClass({
           INPUT({className: "overlayEnable", type: "checkbox"})
         ),
         TD({className: "overlayCell"},
-          IMG({className: "overlayImage", src: imageUrl})
+          DIV({className: "overlayImageBox"},
+            IMG({className: "overlayImage img-thumbnail" + selected, src: imageUrl})
+          )
         )
       )
     )
