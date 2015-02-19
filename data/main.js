@@ -11,7 +11,6 @@ const Slider = require("bootstrap-slider");
 // the current profile directory.
 var data = {
   overlays: [{
-    selected: true,
     url: "https://www.google.cz/images/srpr/logo11w.png"
   }, {
     url: "http://getfirebug.com/img/firebug-large.png"

@@ -13,14 +13,22 @@ const { TABLE, TBODY, TR, TD, INPUT, IMG, THEAD, TH, DIV } = Reps.DOM;
  * TODO docs
  */
 var OverlayTable = React.createClass({
+  getInitialState: function() {
+    return { selection: null };
+  },
+
   render: function() {
     var rows = [];
     var key = 0;
     var data = this.props.data;
 
     var overlays = data.overlays;
-    overlays.forEach(function(overlay) {
-      rows.push(OverlayRow({key: ++key, overlay: overlay}));
+    overlays.forEach(overlay => {
+      rows.push(OverlayRow({
+        key: ++key,
+        overlay: overlay,
+        onClick: this.onClick.bind(this, overlay)
+      }));
     });
 
     return (
@@ -36,7 +44,15 @@ var OverlayTable = React.createClass({
 
   // Event Handlers
 
-  onClick: function(event) {
+  onClick: function(overlay, event) {
+    if (this.state.selection) {
+      this.state.selection.selected = false;
+    }
+
+    overlay.selected = true;
+    this.state.selection = overlay;
+
+    this.setState(this.state);
   }
 });
 
@@ -44,29 +60,32 @@ var OverlayTable = React.createClass({
  * TODO docs
  */
 var OverlayRow = React.createClass({
+  getInitialState: function() {
+    return { overlay: {} };
+  },
+
   render: function() {
     var overlay = this.props.overlay;
     var imageUrl = overlay.url;
     var selected = overlay.selected ? " selected" : "";
 
     return (
-      TR({className: "overlayRow", onClick: this.onClick},
+      TR({className: "overlayRow", onClick: this.props.onClick},
         TD({className: "overlayCell"},
           INPUT({className: "overlayEnable", type: "checkbox"})
         ),
         TD({className: "overlayCell"},
-          DIV({className: "overlayImageBox"},
-            IMG({className: "overlayImage img-thumbnail" + selected, src: imageUrl})
+          DIV({className: "overlayImageBox" + selected},
+            IMG({className: "overlayImage img-thumbnail", src: imageUrl})
           )
         )
       )
     )
   },
 
-  // Event Handlers
-
-  onClick: function(event) {
-  }
+  componentDidMount: function() {
+    this.setState({overlay: this.props.overlay});
+  },
 });
 
 // Exports from this module
