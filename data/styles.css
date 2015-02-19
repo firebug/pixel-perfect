@@ -5,7 +5,13 @@
 
 body {
   background-color: white;
-  padding: 10px;
+  padding: 0;
   margin: 0;
   height: 100%;
+}
+
+.overlayImage {
+  width: 96px;
+  height: 62px;
+  border: 1px solid gray;
 }
