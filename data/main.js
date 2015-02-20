@@ -34,5 +34,11 @@ var mySlider = new Slider("#opacity", {
   handle: "custom"
 });
 
+// Display the page content when it's ready to avoid flashing
+// during the page load.
+document.addEventListener("load", event => {
+  document.body.removeAttribute("collapsed");
+}, true);
+
 // End of main.js
 });
