@@ -20,9 +20,8 @@ var OverlayList = React.createClass({
   render: function() {
     var rows = [];
     var key = 0;
-    var data = this.props.data;
+    var overlays = this.props.overlays;
 
-    var overlays = data.overlays;
     overlays.forEach(overlay => {
       rows.push(OverlayRow({
         key: ++key,

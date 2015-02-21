@@ -4,12 +4,12 @@ define(function(require, exports, module) {
 
 // Dependencies
 const React = require("react");
-const { OverlayList } = require("overlay-list");
-const { OverlayForm } = require("overlay-form");
+const { PopupLayout } = require("popup-layout");
 
 // xxxHonza: temporary JSON data. Should be stored within
 // the current profile directory.
 var data = {
+  selection:  null,
   overlays: [{
     opacity: 50,
     x: 0,
@@ -37,11 +37,7 @@ var data = {
   }]
 }
 
-var overlayList = document.querySelector(".overlayList");
-React.render(OverlayList({data: data}), overlayList);
-
-var overlayForm = document.querySelector(".overlayForm");
-React.render(OverlayForm({overlay: data.overlays[0]}), overlayForm);
+React.render(PopupLayout(data), document.body);
 
 // Display the page content when it's ready to avoid flashing
 // during the page load.
