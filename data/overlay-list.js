@@ -12,7 +12,7 @@ const { TABLE, TBODY, TR, TD, INPUT, IMG, THEAD, TH, DIV } = Reps.DOM;
 /**
  * TODO docs
  */
-var OverlayTable = React.createClass({
+var OverlayList = React.createClass({
   getInitialState: function() {
     return { selection: null };
   },
@@ -89,5 +89,5 @@ var OverlayRow = React.createClass({
 });
 
 // Exports from this module
-exports.OverlayTable = React.createFactory(OverlayTable);
+exports.OverlayList = React.createFactory(OverlayList);
 });

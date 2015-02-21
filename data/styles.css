@@ -43,7 +43,7 @@ body[collapsed="true"] {
 /******************************************************************************/
 /* Overlays */
 
-.overlayBox {
+.overlayList {
   overflow-y: auto;
   overflow-x: hidden;
   height: 200px;

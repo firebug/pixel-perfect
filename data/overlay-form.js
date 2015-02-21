@@ -15,7 +15,7 @@ const { SPAN, TABLE, TR, TD, BUTTON, INPUT } = Reps.DOM;
  *
  * xxxHonza: localization
  */
-var Overlay = React.createClass({
+var OverlayForm = React.createClass({
   getInitialState: function() {
     return { overlay: {} };
   },
@@ -91,5 +91,5 @@ var Overlay = React.createClass({
 });
 
 // Exports from this module
-exports.Overlay = React.createFactory(Overlay);
+exports.OverlayForm = React.createFactory(OverlayForm);
 });

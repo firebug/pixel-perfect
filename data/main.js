@@ -4,8 +4,8 @@ define(function(require, exports, module) {
 
 // Dependencies
 const React = require("react");
-const { OverlayTable } = require("overlay-table");
-const { Overlay } = require("overlay");
+const { OverlayList } = require("overlay-list");
+const { OverlayForm } = require("overlay-form");
 
 // xxxHonza: temporary JSON data. Should be stored within
 // the current profile directory.
@@ -37,11 +37,11 @@ var data = {
   }]
 }
 
-var overlayBox = document.querySelector(".overlayBox");
-React.render(OverlayTable({data: data}), overlayBox);
+var overlayList = document.querySelector(".overlayList");
+React.render(OverlayList({data: data}), overlayList);
 
 var overlayForm = document.querySelector(".overlayForm");
-React.render(Overlay({overlay: data.overlays[0]}), overlayForm);
+React.render(OverlayForm({overlay: data.overlays[0]}), overlayForm);
 
 // Display the page content when it's ready to avoid flashing
 // during the page load.
