@@ -43,5 +43,11 @@ React.render(OverlayTable({data: data}), overlayBox);
 var overlayForm = document.querySelector(".overlayForm");
 React.render(Overlay({overlay: data.overlays[0]}), overlayForm);
 
+// Display the page content when it's ready to avoid flashing
+// during the page load.
+document.addEventListener("load", event => {
+  document.body.removeAttribute("collapsed");
+}, true);
+
 // End of main.js
 });
