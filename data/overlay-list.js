@@ -19,14 +19,15 @@ var OverlayList = React.createClass({
 
   render: function() {
     var rows = [];
-    var key = 0;
+    var index = 0;
     var overlays = this.props.overlays;
 
     overlays.forEach(overlay => {
       rows.push(OverlayRow({
-        key: ++key,
+        key: ++index,
         overlay: overlay,
-        onClick: this.onClick.bind(this, overlay)
+        selected: overlay == this.props.selection,
+        onClick: this.onClick.bind(this, overlay, index)
       }));
     });
 
@@ -43,30 +44,23 @@ var OverlayList = React.createClass({
 
   // Event Handlers
 
-  onClick: function(overlay, event) {
-    if (this.state.selection) {
-      this.state.selection.selected = false;
-    }
-
-    overlay.selected = true;
-    this.state.selection = overlay;
-
-    this.setState(this.state);
+  onClick: function(overlay, index, event) {
+    this.props.setSelection(overlay, index);
   }
 });
 
 /**
  * TODO docs
  */
-var OverlayRow = React.createClass({
+var OverlayRow = React.createFactory(React.createClass({
   getInitialState: function() {
-    return { overlay: {} };
+    return { overlay: this.props.overlay };
   },
 
   render: function() {
     var overlay = this.props.overlay;
     var imageUrl = overlay.url;
-    var selected = overlay.selected ? " selected" : "";
+    var selected = this.props.selected ? " selected" : "";
 
     return (
       TR({className: "overlayRow", onClick: this.props.onClick},
@@ -85,7 +79,7 @@ var OverlayRow = React.createClass({
   componentDidMount: function() {
     this.setState({overlay: this.props.overlay});
   },
-});
+}));
 
 // Exports from this module
 exports.OverlayList = React.createFactory(OverlayList);

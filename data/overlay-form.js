@@ -12,16 +12,17 @@ const { SPAN, TABLE, TR, TD, BUTTON, INPUT } = Reps.DOM;
 
 /**
  * TODO docs
- *
- * xxxHonza: localization
  */
 var OverlayForm = React.createClass({
   getInitialState: function() {
-    return { overlay: {} };
+    return {
+      overlays: [],
+      selection: 0
+    };
   },
 
   componentDidMount: function() {
-    this.setState({overlay: this.props.overlay});
+    //this.setState(this.props);
 
     var mySlider = new Slider("#opacity", {
       min: 0,
@@ -35,8 +36,10 @@ var OverlayForm = React.createClass({
   },
 
   render: function() {
-    var overlay = this.props.overlay;
+    var overlay = this.props.selection;
+    var overlays = this.props.overlays;
 
+    // xxxHonza: localization
     return (
       TABLE({className: "form"},
         TR({},
@@ -65,28 +68,14 @@ var OverlayForm = React.createClass({
         ),
         TR({},
           TD({className: "buttonBar", colSpan: 2},
-            BUTTON({id: "hideBtn", onClick: this.onToggle}, "Hide"),
-            BUTTON({id: "lockBtn", onClick: this.onLock}, "Lock"),
-            BUTTON({id: "addNewOverlayBtn", onClick: this.onAddNewOverlay},
+            BUTTON({id: "hideBtn", onClick: this.props.onToggle}, "Hide"),
+            BUTTON({id: "lockBtn", onClick: this.props.onLock}, "Lock"),
+            BUTTON({id: "addNewOverlayBtn", onClick: this.props.onAddNewOverlay},
               "Add New Layer")
           )
         )
       )
     )
-  },
-
-  // Event Handlers
-
-  onToggle: function(event) {
-    //postChromeMessage("selection", this.props.packet);
-  },
-
-  onLock: function(event) {
-    //postChromeMessage("selection", this.props.packet);
-  },
-
-  onAddNewOverlay: function(event) {
-    //postChromeMessage("selection", this.props.packet);
   },
 });
 

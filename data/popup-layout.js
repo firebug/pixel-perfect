@@ -19,35 +19,68 @@ const { TABLE, TR, TD, DIV } = Reps.DOM;
 var PopupLayout = React.createClass({
   getInitialState: function() {
     return {
-      overlays: [],
-      selection: null
+      overlays: this.props.overlays,
+      selection: this.props.selection,
     };
   },
 
-  componentDidMount: function() {
-    this.setState(this.props);
-  },
-
   render: function() {
-    var overlays = this.props.overlays;
-    var selection = this.props.overlays[0];
-
     return (
       TABLE({className: "", width: "100%"},
         TR({},
           TD({vAlign: "top"},
             DIV({className: "overlayForm"},
-              OverlayForm({overlay: selection})
+              OverlayForm({
+                overlays: this.props.overlays,
+                selection: this.state.selection,
+                onToggle: this.onToggle,
+                onLock: this.onLock,
+                onAddNewOverlay: this.onAddNewOverlay
+              })
             )
           ),
           TD({vAlign: "top"},
             DIV({className: "overlayList"},
-              OverlayList({overlays: overlays})
+              OverlayList({
+                overlays: this.props.overlays,
+                selection: this.state.selection,
+                setSelection: this.setSelection
+              })
             )
           )
         )
       )
     )
+  },
+
+  setSelection: function(overlay, index) {
+    this.state.selection = overlay;
+    this.setState(this.state);
+  },
+
+  // Commands
+
+  onToggle: function(event) {
+    //postChromeMessage("selection", this.props.packet);
+  },
+
+  onLock: function(event) {
+    //postChromeMessage("selection", this.props.packet);
+  },
+
+  onAddNewOverlay: function(event) {
+
+    this.state.overlays.push({
+      opacity: 50,
+      x: 0,
+      y: 0,
+      scale: 1,
+      url: "test"
+    });
+
+    this.setState({overlays: this.state.overlays});
+
+    //postChromeMessage("selection", this.props.packet);
   },
 });
 
