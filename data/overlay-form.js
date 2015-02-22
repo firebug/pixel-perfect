@@ -22,9 +22,7 @@ var OverlayForm = React.createClass({
   },
 
   componentDidMount: function() {
-    //this.setState(this.props);
-
-    var mySlider = new Slider("#opacity", {
+    var mySlider = new Slider("input#opacity", {
       min: 0,
       max: 100,
       orientation: "horizontal",
@@ -36,7 +34,7 @@ var OverlayForm = React.createClass({
   },
 
   render: function() {
-    var overlay = this.props.selection;
+    var overlay = this.props.selection || {};
     var overlays = this.props.overlays;
 
     // xxxHonza: localization
@@ -45,7 +43,7 @@ var OverlayForm = React.createClass({
         TR({},
           TD({align: "right"}, "Opacity:"),
           TD({},
-            SPAN({id: "opacity", value: overlay.opacity})
+            INPUT({id: "opacity", ref: "opacity", value: overlay.opacity})
           )
         ),
         TR({},

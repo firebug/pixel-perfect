@@ -69,15 +69,8 @@ var PopupLayout = React.createClass({
   },
 
   onAddNewOverlay: function(event) {
-
-    this.state.overlays.push({
-      opacity: 50,
-      x: 0,
-      y: 0,
-      scale: 1,
-      url: "test"
-    });
-
+    var overlay = OverlayStore.add();
+    this.state.overlays.push(overlay);
     this.setState({overlays: this.state.overlays});
 
     //postChromeMessage("selection", this.props.packet);
