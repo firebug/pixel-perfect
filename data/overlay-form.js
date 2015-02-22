@@ -22,15 +22,22 @@ var OverlayForm = React.createClass({
   },
 
   componentDidMount: function() {
-    var mySlider = new Slider("input#opacity", {
+    this.opacitySlider = new Slider("input#opacity", {
       min: 0,
       max: 100,
       orientation: "horizontal",
-      value: 50,
+      value: this.props.selection.opacity,
       tooltip: "show",
       step: 1,
       handle: "custom"
     });
+  },
+
+  componentDidUpdate(prevProps, prevState) {
+    // Update opacity slider. This must be done manually after
+    // this form (reactjs component) is updated (re-rendered)
+    // since the slider is implemented as 3rd party widget (non reactjs).
+    this.opacitySlider.setValue(this.props.selection.opacity);
   },
 
   render: function() {
@@ -43,7 +50,7 @@ var OverlayForm = React.createClass({
         TR({},
           TD({align: "right"}, "Opacity:"),
           TD({},
-            INPUT({id: "opacity", ref: "opacity", value: overlay.opacity})
+            INPUT({id: "opacity", value: overlay.opacity})
           )
         ),
         TR({},
