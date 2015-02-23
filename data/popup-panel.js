@@ -7,6 +7,7 @@ const React = require("react");
 const { Reps } = require("./reps");
 const { OverlayList } = require("overlay-list");
 const { OverlayForm } = require("overlay-form");
+const { OverlayStore } = require("overlay-store");
 
 // Shortcuts
 const { TABLE, TR, TD, DIV } = Reps.DOM;
@@ -68,11 +69,7 @@ var PopupPanel = React.createClass({
   },
 
   onAddNewOverlay: function(event) {
-    var overlay = OverlayStore.add();
-    this.state.overlays.push(overlay);
-    this.setState({overlays: this.state.overlays});
-
-    //postChromeMessage("selection", this.props.packet);
+    OverlayStore.add();
   },
 });
 
