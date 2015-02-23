@@ -40,6 +40,10 @@ body[collapsed="true"] {
   padding-top: 18px;
 }
 
+.form #opacity {
+  border: 0;
+}
+
 /******************************************************************************/
 /* Overlays */
 

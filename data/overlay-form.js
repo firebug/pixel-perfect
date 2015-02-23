@@ -6,6 +6,7 @@ define(function(require, exports, module) {
 const React = require("react");
 const { Reps } = require("./reps");
 const Slider = require("bootstrap-slider");
+const { OverlayStore } = require("overlay-store");
 
 // Shortcuts
 const { SPAN, TABLE, TR, TD, BUTTON, INPUT } = Reps.DOM;
@@ -15,36 +16,15 @@ const { SPAN, TABLE, TR, TD, BUTTON, INPUT } = Reps.DOM;
  */
 var OverlayForm = React.createClass({
   getInitialState: function() {
-    return {
-      overlays: [],
-      selection: 0
-    };
+    return {};
   },
 
-  componentDidMount: function() {
-    this.opacitySlider = new Slider("input#opacity", {
-      min: 0,
-      max: 100,
-      orientation: "horizontal",
-      value: this.props.selection.opacity,
-      tooltip: "show",
-      step: 1,
-      handle: "custom"
-    });
-
-    this.opacitySlider.on("change", this.onOpacityChange.bind(this));
-  },
-
-  componentDidUpdate(prevProps, prevState) {
-    // Update opacity slider. This must be done manually after
-    // this form (reactjs component) is updated (re-rendered)
-    // since the slider is implemented as 3rd party widget (non reactjs).
-    this.opacitySlider.setValue(this.props.selection.opacity);
+  componentWillReceiveProps: function(nextProps) {
+    this.setState(nextProps.selection);
   },
 
   render: function() {
-    var overlay = this.props.selection || {};
-    var overlays = this.props.overlays;
+    var overlay = this.state;
 
     // xxxHonza: localization
     return (
@@ -52,25 +32,33 @@ var OverlayForm = React.createClass({
         TR({},
           TD({align: "right"}, "Opacity:"),
           TD({},
-            INPUT({id: "opacity", value: overlay.opacity})
+            INPUT({id: "opacity", type: "range", ref: "opacity",
+              value: overlay.opacity,
+              onChange: this.onChange.bind(this, "opacity")})
           )
         ),
         TR({},
           TD({align: "right"}, "X:"),
           TD({},
-            INPUT({id: "xpos", size: 5, value: overlay.x})
+            INPUT({id: "x", size: 5, ref: "x",
+              value: overlay.x,
+              onChange: this.onChange.bind(this, "x")})
           )
         ),
         TR({},
           TD({align: "right"}, "Y:"),
           TD({},
-            INPUT({id: "ypos", size: 5, value: overlay.y})
+            INPUT({id: "y", size: 5, ref: "y",
+              value: overlay.y,
+              onChange: this.onChange.bind(this, "y")})
           )
         ),
         TR({},
           TD({align: "right"}, "Scale:"),
           TD({},
-            INPUT({id: "scale", size: 3, value: overlay.scale})
+            INPUT({id: "scale", size: 3, ref: "scale",
+              value: overlay.scale,
+              onChange: this.onChange.bind(this, "scale")})
           )
         ),
         TR({},
@@ -87,9 +75,16 @@ var OverlayForm = React.createClass({
 
   // Events
 
-  onOpacityChange: function(event) {
-    var newValue = event.value.newValue;
-  }
+  onChange: function(propName, event) {
+    var value = event.target.value;
+
+    this.state[propName] = value;
+    this.setState(this.state);
+
+    var props = {};
+    props[propName] = value;
+    OverlayStore.modify(this.props.selection.id, props);
+  },
 });
 
 // Exports from this module

@@ -31,18 +31,17 @@ var PopupLayout = React.createClass({
           TD({vAlign: "top"},
             DIV({className: "overlayForm"},
               OverlayForm({
-                overlays: this.props.overlays,
                 selection: this.state.selection,
                 onToggle: this.onToggle,
                 onLock: this.onLock,
-                onAddNewOverlay: this.onAddNewOverlay
+                onAddNewOverlay: this.onAddNewOverlay,
               })
             )
           ),
           TD({vAlign: "top"},
             DIV({className: "overlayList"},
               OverlayList({
-                overlays: this.props.overlays,
+                overlays: this.state.overlays,
                 selection: this.state.selection,
                 setSelection: this.setSelection
               })
