@@ -5,7 +5,6 @@ define(function(require, exports, module) {
 // Dependencies
 const React = require("react");
 const { Reps } = require("./reps");
-const Slider = require("bootstrap-slider");
 const { OverlayStore } = require("overlay-store");
 
 // Shortcuts

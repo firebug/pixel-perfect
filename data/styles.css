@@ -81,21 +81,3 @@ body[collapsed="true"] {
 .overlayImageBox.selected .overlayImage {
   border: 1px solid transparent;
 }
-
-/******************************************************************************/
-/* Slider */
-
-.slider-handle.custom {
-  background-image: url("img/slider.png");
-  background-repeat: no-repeat;
-  background-position: 6px 2px;
-  box-shadow: none;
-}
-
-.slider-handle.custom::before {
-  content: none;
-}
-
-.slider.slider-horizontal {
-  width: 150px;
-}
