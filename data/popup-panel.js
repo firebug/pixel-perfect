@@ -16,7 +16,7 @@ const { TABLE, TR, TD, DIV } = Reps.DOM;
  *
  * xxxHonza: localization
  */
-var PopupLayout = React.createClass({
+var PopupPanel = React.createClass({
   getInitialState: function() {
     return {
       overlays: this.props.overlays,
@@ -77,5 +77,5 @@ var PopupLayout = React.createClass({
 });
 
 // Exports from this module
-exports.PopupLayout = React.createFactory(PopupLayout);
+exports.PopupPanel = React.createFactory(PopupPanel);
 });

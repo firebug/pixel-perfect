@@ -4,7 +4,7 @@ define(function(require, exports, module) {
 
 // Dependencies
 const React = require("react");
-const { PopupLayout } = require("popup-layout");
+const { PopupPanel } = require("popup-panel");
 const { OverlayStore } = require("overlay-store");
 
 // Get overlay data from persistent store.
@@ -14,7 +14,7 @@ var state = {
 }
 
 // Render panel content
-var panel = React.render(PopupLayout(state), document.body);
+var panel = React.render(PopupPanel(state), document.body);
 
 // Handle refresh events sent from the chrome scope and refresh
 // the panel content (panel component).
