@@ -29,6 +29,12 @@ body[collapsed="true"] {
   padding: 3px;
 }
 
+.form .url {
+  word-break: break-all;
+  color: gray;
+  font-size: 10px;
+}
+
 .form input {
   border: 1px solid lightgray;
 }
@@ -57,7 +63,7 @@ body[collapsed="true"] {
 .overlayList {
   overflow-y: auto;
   overflow-x: hidden;
-  height: 200px;
+  height: 230px;
   min-width: 150px;
 }
 

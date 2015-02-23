@@ -8,7 +8,7 @@ const { Reps } = require("./reps");
 const { OverlayStore } = require("overlay-store");
 
 // Shortcuts
-const { SPAN, TABLE, TR, TD, BUTTON, INPUT } = Reps.DOM;
+const { SPAN, TABLE, TR, TD, BUTTON, INPUT, DIV } = Reps.DOM;
 
 /**
  * TODO docs
@@ -59,6 +59,11 @@ var OverlayForm = React.createClass({
           TD({colSpan: 2},
             INPUT({size: 3, value: overlay.scale,
               onChange: this.onChange.bind(this, "scale")})
+          )
+        ),
+        TR({},
+          TD({colSpan: 3},
+            DIV({className: "url"}, overlay.url)
           )
         ),
         TR({},
