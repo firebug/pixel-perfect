@@ -53,7 +53,7 @@ var PopupPanel = React.createClass({
     )
   },
 
-  setSelection: function(overlay, index) {
+  setSelection: function(overlay) {
     this.state.selection = overlay;
     this.setState(this.state);
   },

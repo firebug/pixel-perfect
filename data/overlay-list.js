@@ -5,6 +5,7 @@ define(function(require, exports, module) {
 // Dependencies
 const React = require("react");
 const { Reps } = require("./reps");
+const { OverlayStore } = require("overlay-store");
 
 // Shortcuts
 const { TABLE, TBODY, TR, TD, INPUT, IMG, THEAD, TH, DIV } = Reps.DOM;
@@ -19,15 +20,15 @@ var OverlayList = React.createClass({
 
   render: function() {
     var rows = [];
-    var index = 0;
     var overlays = this.props.overlays;
 
     overlays.forEach(overlay => {
       rows.push(OverlayRow({
-        key: ++index,
+        key: overlay.id,
         overlay: overlay,
         selected: overlay == this.props.selection,
-        onClick: this.onClick.bind(this, overlay, index)
+        onSelect: this.onSelect.bind(this, overlay),
+        onRemove: this.onRemove.bind(this, overlay)
       }));
     });
 
@@ -44,8 +45,12 @@ var OverlayList = React.createClass({
 
   // Event Handlers
 
-  onClick: function(overlay, index, event) {
-    this.props.setSelection(overlay, index);
+  onSelect: function(overlay, event) {
+    this.props.setSelection(overlay);
+  },
+
+  onRemove: function(overlay, event) {
+    OverlayStore.remove(overlay.id);
   }
 });
 
@@ -63,13 +68,14 @@ var OverlayRow = React.createFactory(React.createClass({
     var selected = this.props.selected ? " selected" : "";
 
     return (
-      TR({className: "overlayRow", onClick: this.props.onClick},
+      TR({className: "overlayRow", onClick: this.props.onSelect},
         TD({className: "overlayCell"},
           INPUT({className: "overlayEnable", type: "checkbox"})
         ),
         TD({className: "overlayCell"},
           DIV({className: "overlayImageBox" + selected},
-            IMG({className: "overlayImage img-thumbnail", src: imageUrl})
+            IMG({className: "overlayImage img-thumbnail", src: imageUrl}),
+            DIV({className: "closeButton", onClick: this.props.onRemove})
           )
         )
       )

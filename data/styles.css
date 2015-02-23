@@ -66,18 +66,27 @@ body[collapsed="true"] {
 .overlayImageBox {
   border: 3px solid transparent;
   border-radius: 4px;
-}
-
-.overlayImageBox:hover {
-  /*background-image: url("img/close.svg");
-  background-position: right top;
-  background-repeat: no-repeat;*/
+  position: relative;
+  display: inline-block;
 }
 
 .overlayImageBox.selected {
   border: 3px solid rgb(76, 158, 217);
 }
 
-.overlayImageBox.selected .overlayImage {
-  border: 1px solid transparent;
+.overlayImageBox .closeButton {
+  display: none;
+  cursor: pointer;
+  background-image: url("img/close.svg");
+  background-position: right top;
+  background-repeat: no-repeat;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.overlayImageBox:hover .closeButton {
+  display: block;
 }
