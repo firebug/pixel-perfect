@@ -31,6 +31,8 @@ var OverlayForm = React.createClass({
       step: 1,
       handle: "custom"
     });
+
+    this.opacitySlider.on("change", this.onOpacityChange.bind(this));
   },
 
   componentDidUpdate(prevProps, prevState) {
@@ -82,6 +84,12 @@ var OverlayForm = React.createClass({
       )
     )
   },
+
+  // Events
+
+  onOpacityChange: function(event) {
+    var newValue = event.value.newValue;
+  }
 });
 
 // Exports from this module
