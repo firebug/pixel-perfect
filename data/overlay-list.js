@@ -58,10 +58,6 @@ var OverlayList = React.createClass({
  * TODO docs
  */
 var OverlayRow = React.createFactory(React.createClass({
-  getInitialState: function() {
-    return { overlay: this.props.overlay };
-  },
-
   render: function() {
     var overlay = this.props.overlay;
     var imageUrl = overlay.url;
@@ -80,10 +76,6 @@ var OverlayRow = React.createFactory(React.createClass({
         )
       )
     )
-  },
-
-  componentDidMount: function() {
-    this.setState({overlay: this.props.overlay});
   },
 }));
 
