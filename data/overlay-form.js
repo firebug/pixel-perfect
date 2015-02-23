@@ -29,7 +29,7 @@ var OverlayForm = React.createClass({
     return (
       TABLE({className: "form"},
         TR({},
-          TD({align: "right"}, "Opacity:"),
+          TD({className: "right"}, "Opacity:"),
           TD({},
             INPUT({id: "opacity", type: "range", ref: "opacity",
               value: overlay.opacity,
@@ -37,7 +37,7 @@ var OverlayForm = React.createClass({
           )
         ),
         TR({},
-          TD({align: "right"}, "X:"),
+          TD({className: "right"}, "X:"),
           TD({},
             INPUT({id: "x", size: 5, ref: "x",
               value: overlay.x,
@@ -45,7 +45,7 @@ var OverlayForm = React.createClass({
           )
         ),
         TR({},
-          TD({align: "right"}, "Y:"),
+          TD({className: "right"}, "Y:"),
           TD({},
             INPUT({id: "y", size: 5, ref: "y",
               value: overlay.y,
@@ -53,7 +53,7 @@ var OverlayForm = React.createClass({
           )
         ),
         TR({},
-          TD({align: "right"}, "Scale:"),
+          TD({className: "right"}, "Scale:"),
           TD({},
             INPUT({id: "scale", size: 3, ref: "scale",
               value: overlay.scale,
