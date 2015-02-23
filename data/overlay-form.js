@@ -31,37 +31,38 @@ var OverlayForm = React.createClass({
         TR({},
           TD({className: "right"}, "Opacity:"),
           TD({},
-            INPUT({id: "opacity", type: "range", ref: "opacity",
-              value: overlay.opacity,
+            INPUT({className: "opacity", type: "range", value: overlay.opacity,
+              onChange: this.onChange.bind(this, "opacity")})
+          ),
+          TD({},
+            INPUT({className: "opacity-value", size: 3, value: overlay.opacity,
+              maxLength: 3,
               onChange: this.onChange.bind(this, "opacity")})
           )
         ),
         TR({},
           TD({className: "right"}, "X:"),
-          TD({},
-            INPUT({id: "x", size: 5, ref: "x",
-              value: overlay.x,
+          TD({colSpan: 2},
+            INPUT({size: 5, value: overlay.x,
               onChange: this.onChange.bind(this, "x")})
           )
         ),
         TR({},
           TD({className: "right"}, "Y:"),
-          TD({},
-            INPUT({id: "y", size: 5, ref: "y",
-              value: overlay.y,
+          TD({colSpan: 2},
+            INPUT({size: 5, value: overlay.y,
               onChange: this.onChange.bind(this, "y")})
           )
         ),
         TR({},
           TD({className: "right"}, "Scale:"),
-          TD({},
-            INPUT({id: "scale", size: 3, ref: "scale",
-              value: overlay.scale,
+          TD({colSpan: 2},
+            INPUT({size: 3, value: overlay.scale,
               onChange: this.onChange.bind(this, "scale")})
           )
         ),
         TR({},
-          TD({className: "buttonBar", colSpan: 2},
+          TD({className: "buttonBar", colSpan: 3},
             BUTTON({id: "hideBtn", onClick: this.props.onToggle}, "Hide"),
             BUTTON({id: "lockBtn", onClick: this.props.onLock}, "Lock"),
             BUTTON({id: "addNewOverlayBtn", onClick: this.props.onAddNewOverlay},

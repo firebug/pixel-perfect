@@ -22,7 +22,6 @@ body[collapsed="true"] {
 
 .form {
   margin: 8px;
-  padding: 3px;
   width: 230px;
 }
 
@@ -31,7 +30,6 @@ body[collapsed="true"] {
 }
 
 .form input {
-  size: 5;
   border: 1px solid lightgray;
 }
 
@@ -39,8 +37,14 @@ body[collapsed="true"] {
   padding-top: 18px;
 }
 
-.form #opacity {
+.form .opacity {
   border: 0;
+  width: 100%;
+}
+
+.form .opacity-value {
+  border: 0;
+  width: 30px;
 }
 
 .form td.right {
