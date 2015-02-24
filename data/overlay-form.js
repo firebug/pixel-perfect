@@ -69,13 +69,19 @@ var OverlayForm = React.createClass({
           )
         ),
         TR({},
+          TD({className: "right"}, "Lock:"),
+          TD({colSpan: 2},
+            INPUT({type: "checkbox", checked: overlay.lock,
+              onChange: this.onChange.bind(this, "lock", "boolean")})
+          )
+        ),
+        TR({},
           TD({colSpan: 3},
             DIV({className: "url"}, overlay.url)
           )
         ),
         TR({},
           TD({className: "buttonBar", colSpan: 3},
-            BUTTON({id: "lockBtn", onClick: this.props.onLock}, "Lock"),
             BUTTON({id: "addNewOverlayBtn", onClick: this.props.onAddNewOverlay},
               "Add New Layer")
           )
