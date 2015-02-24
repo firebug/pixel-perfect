@@ -33,7 +33,6 @@ var PopupPanel = React.createClass({
             DIV({className: "overlayForm"},
               OverlayForm({
                 selection: this.state.selection,
-                onToggle: this.onToggle,
                 onLock: this.onLock,
                 onAddNewOverlay: this.onAddNewOverlay,
               })
@@ -59,10 +58,6 @@ var PopupPanel = React.createClass({
   },
 
   // Commands
-
-  onToggle: function(event) {
-    //postChromeMessage("selection", this.props.packet);
-  },
 
   onLock: function(event) {
     //postChromeMessage("selection", this.props.packet);

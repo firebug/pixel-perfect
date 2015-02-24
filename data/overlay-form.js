@@ -37,28 +37,35 @@ var OverlayForm = React.createClass({
           TD({},
             INPUT({className: "opacity-value", size: 3, value: overlay.opacity,
               maxLength: 3,
-              onChange: this.onChange.bind(this, "opacity")})
+              onChange: this.onChange.bind(this, "opacity", "number")})
           )
         ),
         TR({},
           TD({className: "right"}, "X:"),
           TD({colSpan: 2},
             INPUT({size: 5, value: overlay.x,
-              onChange: this.onChange.bind(this, "x")})
+              onChange: this.onChange.bind(this, "x", "number")})
           )
         ),
         TR({},
           TD({className: "right"}, "Y:"),
           TD({colSpan: 2},
             INPUT({size: 5, value: overlay.y,
-              onChange: this.onChange.bind(this, "y")})
+              onChange: this.onChange.bind(this, "y", "number")})
           )
         ),
         TR({},
           TD({className: "right"}, "Scale:"),
           TD({colSpan: 2},
             INPUT({size: 3, value: overlay.scale,
-              onChange: this.onChange.bind(this, "scale")})
+              onChange: this.onChange.bind(this, "scale", "number")})
+          )
+        ),
+        TR({},
+          TD({className: "right"}, "Visible:"),
+          TD({colSpan: 2},
+            INPUT({type: "checkbox", checked: overlay.visible,
+              onChange: this.onChange.bind(this, "visible", "boolean")})
           )
         ),
         TR({},
@@ -68,7 +75,6 @@ var OverlayForm = React.createClass({
         ),
         TR({},
           TD({className: "buttonBar", colSpan: 3},
-            BUTTON({id: "hideBtn", onClick: this.props.onToggle}, "Hide"),
             BUTTON({id: "lockBtn", onClick: this.props.onLock}, "Lock"),
             BUTTON({id: "addNewOverlayBtn", onClick: this.props.onAddNewOverlay},
               "Add New Layer")
@@ -80,8 +86,20 @@ var OverlayForm = React.createClass({
 
   // Events
 
-  onChange: function(propName, event) {
-    var value = event.target.value;
+  onChange: function(propName, type, event) {
+    var value;
+
+    switch (type) {
+    case "boolean":
+      value = event.target.checked;
+      break;
+    case "number":
+      value = parseInt(event.target.checked, 10);
+      break;
+    default:
+      value = event.target.value;
+      break;
+    }
 
     this.state[propName] = value;
     this.setState(this.state);
