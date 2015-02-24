@@ -58,6 +58,17 @@ var OverlayList = React.createClass({
  * TODO docs
  */
 var OverlayRow = React.createFactory(React.createClass({
+  getInitialState: function() {
+    return {
+      overlay: {},
+      selected: false
+    };
+  },
+
+  componentWillReceiveProps: function(nextProps) {
+    this.setState(nextProps);
+  },
+
   render: function() {
     var overlay = this.props.overlay;
     var imageUrl = overlay.url;
@@ -66,7 +77,8 @@ var OverlayRow = React.createFactory(React.createClass({
     return (
       TR({className: "overlayRow", onClick: this.props.onSelect},
         TD({className: "overlayCell"},
-          INPUT({className: "overlayEnable", type: "checkbox"})
+          INPUT({type: "checkbox", checked: overlay.visible,
+            onChange: this.onVisibleChange})
         ),
         TD({className: "overlayCell"},
           DIV({className: "overlayImageBox" + selected},
@@ -76,6 +88,16 @@ var OverlayRow = React.createFactory(React.createClass({
         )
       )
     )
+  },
+
+  onVisibleChange: function(event) {
+    var value = event.target.checked;
+
+    this.state.overlay["visible"] = value;
+    this.setState(this.state);
+
+    var props = { visible: value };
+    OverlayStore.modify(this.props.overlay.id, props);
   },
 }));
 
