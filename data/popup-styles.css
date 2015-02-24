@@ -65,6 +65,16 @@ body[collapsed="true"] {
   text-align: right;
 }
 
+.form .position {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.form td.positionCell {
+  padding-left: 0;
+}
+
 /******************************************************************************/
 /* Overlays */
 

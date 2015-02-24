@@ -42,16 +42,20 @@ var OverlayForm = React.createClass({
         ),
         TR({},
           TD({className: "right"}, "X:"),
-          TD({colSpan: 2},
-            INPUT({size: 5, value: overlay.x,
-              onChange: this.onChange.bind(this, "x", "number")})
-          )
-        ),
-        TR({},
-          TD({className: "right"}, "Y:"),
-          TD({colSpan: 2},
-            INPUT({size: 5, value: overlay.y,
-              onChange: this.onChange.bind(this, "y", "number")})
+          TD({className: "positionCell", colSpan: 2},
+            TABLE({className: "position"},
+              TR({},
+                TD({},
+                  INPUT({size: 5, value: overlay.x,
+                    onChange: this.onChange.bind(this, "x", "number")})
+                ),
+                TD({className: "right"}, "Y:"),
+                TD({},
+                  INPUT({size: 5, value: overlay.y,
+                    onChange: this.onChange.bind(this, "y", "number")})
+                )
+              )
+            )
           )
         ),
         TR({},
@@ -100,7 +104,7 @@ var OverlayForm = React.createClass({
       value = event.target.checked;
       break;
     case "number":
-      value = parseInt(event.target.checked, 10);
+      value = parseInt(event.target.value, 10);
       break;
     default:
       value = event.target.value;
