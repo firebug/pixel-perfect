@@ -20,6 +20,11 @@ body[collapsed="true"] {
 /******************************************************************************/
 /* Form */
 
+.overlayFormCell,
+.overlayListCell {
+  vertical-align: top;
+}
+
 .form {
   margin: 8px;
   width: 230px;
@@ -33,6 +38,7 @@ body[collapsed="true"] {
   word-break: break-all;
   color: gray;
   font-size: 10px;
+  margin-top: 5px;
 }
 
 .form input {
