@@ -32,7 +32,7 @@ var OverlayForm = React.createClass({
           TD({className: "right"}, "Opacity:"),
           TD({},
             INPUT({className: "opacity", type: "range", value: overlay.opacity,
-              onChange: this.onChange.bind(this, "opacity")})
+              onChange: this.onChange.bind(this, "opacity", "string")})
           ),
           TD({},
             INPUT({className: "opacity-value", size: 3, value: overlay.opacity,
@@ -106,7 +106,7 @@ var OverlayForm = React.createClass({
     case "number":
       value = parseInt(event.target.value, 10);
       break;
-    default:
+    case "string":
       value = event.target.value;
       break;
     }
