@@ -11,6 +11,7 @@ body {
   font-size: 12px;
   font-family: Lucida Grande, Tahoma, sans-serif;
   line-height: 15px;
+  -moz-user-select: none;
 }
 
 body[collapsed="true"] {
@@ -39,6 +40,7 @@ body[collapsed="true"] {
   color: gray;
   font-size: 10px;
   margin-top: 5px;
+  -moz-user-select: text;
 }
 
 .form input {
