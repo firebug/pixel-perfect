@@ -32,7 +32,7 @@ var PopupPanel = React.createClass({
           TD({className: "overlayFormCell"},
             DIV({className: "overlayForm"},
               OverlayForm({
-                selection: this.state.selection,
+                overlay: this.state.selection,
                 onAddNewOverlay: this.onAddNewOverlay,
               })
             )

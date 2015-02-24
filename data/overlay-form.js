@@ -19,7 +19,7 @@ var OverlayForm = React.createClass({
   },
 
   componentWillReceiveProps: function(nextProps) {
-    this.setState(nextProps.selection);
+    this.setState(nextProps.overlay);
   },
 
   render: function() {
@@ -116,7 +116,7 @@ var OverlayForm = React.createClass({
 
     var props = {};
     props[propName] = value;
-    OverlayStore.modify(this.props.selection.id, props);
+    OverlayStore.modify(this.props.overlay.id, props);
   },
 });
 

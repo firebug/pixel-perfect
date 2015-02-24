@@ -21,8 +21,17 @@ var panel = React.render(PopupPanel(state), document.body);
 window.addEventListener("refresh", onRefresh);
 function onRefresh(event) {
   var data = JSON.parse(event.data);
-  // xxxHonza: properly pick the default selection
-  panel.setState({overlays: data, selection: data[0]});
+  var selection = panel.state.selection;
+  var overlay = selection ? getOverlay(data, selection.id) : null;
+  panel.setState({overlays: data, selection: overlay ? overlay : data[0]});
+}
+
+function getOverlay(data, id) {
+  for (var i=0; i<data.length; i++) {
+    if (data[i].id == id) {
+      return data[i];
+    }
+  }
 }
 
 // Display the page content when it's ready to avoid flashing
