@@ -14,8 +14,6 @@ const { TABLE, TR, TD, DIV } = Reps.DOM;
 
 /**
  * TODO docs
- *
- * xxxHonza: localization
  */
 var PopupPanel = React.createClass({
   getInitialState: function() {

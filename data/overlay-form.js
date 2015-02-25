@@ -25,11 +25,10 @@ var OverlayForm = React.createClass({
   render: function() {
     var overlay = this.state;
 
-    // xxxHonza: localization
     return (
       TABLE({className: "form"},
         TR({},
-          TD({className: "right"}, "Opacity:"),
+          TD({className: "right"}, Locale.$STR("pixelPerfect.label.opacity") + ":"),
           TD({},
             INPUT({className: "opacity", type: "range", value: overlay.opacity,
               onChange: this.onChange.bind(this, "opacity", "string")})
@@ -41,7 +40,7 @@ var OverlayForm = React.createClass({
           )
         ),
         TR({},
-          TD({className: "right"}, "X:"),
+          TD({className: "right"}, Locale.$STR("pixelPerfect.label.x") + ":"),
           TD({className: "positionCell", colSpan: 2},
             TABLE({className: "position"},
               TR({},
@@ -49,7 +48,7 @@ var OverlayForm = React.createClass({
                   INPUT({size: 5, value: overlay.x,
                     onChange: this.onChange.bind(this, "x", "number")})
                 ),
-                TD({className: "right"}, "Y:"),
+                TD({className: "right"}, Locale.$STR("pixelPerfect.label.y") + ":"),
                 TD({},
                   INPUT({size: 5, value: overlay.y,
                     onChange: this.onChange.bind(this, "y", "number")})
@@ -59,21 +58,21 @@ var OverlayForm = React.createClass({
           )
         ),
         TR({},
-          TD({className: "right"}, "Scale:"),
+          TD({className: "right"}, Locale.$STR("pixelPerfect.label.scale") + ":"),
           TD({colSpan: 2},
             INPUT({size: 3, value: overlay.scale,
               onChange: this.onChange.bind(this, "scale", "number")})
           )
         ),
         TR({},
-          TD({className: "right"}, "Visible:"),
+          TD({className: "right"}, Locale.$STR("pixelPerfect.label.visible") + ":"),
           TD({colSpan: 2},
             INPUT({type: "checkbox", checked: overlay.visible,
               onChange: this.onChange.bind(this, "visible", "boolean")})
           )
         ),
         TR({},
-          TD({className: "right"}, "Lock:"),
+          TD({className: "right"}, Locale.$STR("pixelPerfect.label.lock") + ":"),
           TD({colSpan: 2},
             INPUT({type: "checkbox", checked: overlay.lock,
               onChange: this.onChange.bind(this, "lock", "boolean")})
@@ -87,7 +86,7 @@ var OverlayForm = React.createClass({
         TR({},
           TD({className: "buttonBar", colSpan: 3},
             BUTTON({id: "addNewOverlayBtn", onClick: this.props.onAddNewOverlay},
-              "Add New Layer")
+              Locale.$STR("pixelPerfect.label.addNewLayer"))
           )
         )
       )
