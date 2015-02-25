@@ -111,6 +111,10 @@ var OverlayForm = React.createClass({
       break;
     }
 
+    if (this.state[propName] === value) {
+      return;
+    }
+
     this.state[propName] = value;
     this.setState(this.state);
 
