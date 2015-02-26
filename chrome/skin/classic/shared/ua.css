@@ -3,3 +3,12 @@
 div:-moz-native-anonymous.moz-custom-content-container {
   pointer-events: auto !important;
 }
+
+.pixelperfect-overlay-image {
+  position: absolute;
+  cursor: move;
+}
+
+.pixelperfect-overlay-image[drag] {
+  border: 1px dashed rgb(51, 153, 255);
+}
