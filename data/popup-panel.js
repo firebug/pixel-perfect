@@ -30,7 +30,10 @@ var PopupPanel = React.createClass({
     // If there are no overlays, display default content
     // with instructions
     if (!overlays || !overlays.length) {
-      return DefaultContent({addOverlay: this.addOverlay});
+      return DefaultContent({
+        version: this.props.version,
+        addOverlay: this.addOverlay
+      });
     }
 
     return (
@@ -95,8 +98,8 @@ var DefaultContent = React.createFactory(React.createClass({
               src: "chrome://pixelperfect/skin/logo_32x32.png"})
           ),
           TD({className: "defaultContentHeader"},
-            // xxxHonza: localization, version
-            "Pixel Perfect 0.5.0-alpha.0"
+            SPAN({}, Locale.$STR("pixelPerfect.title")),
+            SPAN({}, this.props.version)
           )
         ),
         TR({},

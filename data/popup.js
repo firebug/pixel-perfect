@@ -21,6 +21,7 @@ window.addEventListener("refresh", event => {
   // Merge new state properties into the current state.
   state.overlays = state.overlays || panel.state.overlays;
   state.selection = state.selection || panel.state.selection;
+  state.version = state.version;
 
   // Update default selection if necessary (the current selected
   // overlay might be removed).
