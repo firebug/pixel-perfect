@@ -32,18 +32,23 @@ var OverlayList = React.createClass({
       }));
     });
 
+    // An extra row for appending new layers.
+    rows.push(AddOverlayRow({
+      onAdd: this.onAdd
+    }));
+
     return (
       TABLE({className: "overlayTable"},
         THEAD({className: "poolRow"},
-          TH({width: "96px"}),
-          TH({width: "20px"})
+          TH({width: "20px"}),
+          TH({width: "96px"})
         ),
         TBODY(null, rows)
       )
     );
   },
 
-  // Event Handlers
+  // Commands
 
   onSelect: function(overlay, event) {
     this.props.setSelection(overlay);
@@ -51,7 +56,11 @@ var OverlayList = React.createClass({
 
   onRemove: function(overlay, event) {
     OverlayStore.remove(overlay.id);
-  }
+  },
+
+  onAdd: function(event) {
+    OverlayStore.add();
+  },
 });
 
 /**
@@ -77,14 +86,14 @@ var OverlayRow = React.createFactory(React.createClass({
     return (
       TR({className: "overlayRow", onClick: this.props.onSelect},
         TD({className: "overlayCell"},
+          INPUT({type: "checkbox", checked: overlay.visible,
+            onChange: this.onVisibleChange})
+        ),
+        TD({className: "overlayCell"},
           DIV({className: "overlayImageBox" + selected},
             IMG({className: "overlayImage img-thumbnail", src: imageUrl}),
             DIV({className: "closeButton", onClick: this.props.onRemove})
           )
-        ),
-        TD({className: "overlayCell"},
-          INPUT({type: "checkbox", checked: overlay.visible,
-            onChange: this.onVisibleChange})
         )
       )
     )
@@ -98,6 +107,28 @@ var OverlayRow = React.createFactory(React.createClass({
 
     var props = { visible: value };
     OverlayStore.modify(this.props.overlay.id, props);
+  },
+}));
+
+/**
+ * TODO docs
+ */
+var AddOverlayRow = React.createFactory(React.createClass({
+  render: function() {
+    return (
+      TR({className: "overlayRow", onClick: this.props.onSelect},
+        TD({className: "overlayCell"}),
+        TD({className: "overlayCell"},
+          DIV({className: "overlayImageBox"},
+            DIV({className: "overlayImage add img-thumbnail"},
+              DIV({onClick: this.props.onAdd},
+                Locale.$STR("pixelPerfect.label.addLayer")
+              )
+            )
+          )
+        )
+      )
+    )
   },
 }));
 

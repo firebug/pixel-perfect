@@ -82,12 +82,6 @@ var OverlayForm = React.createClass({
           TD({colSpan: 3},
             DIV({className: "url"}, overlay.url)
           )
-        ),
-        TR({},
-          TD({className: "buttonBar", colSpan: 3},
-            BUTTON({id: "addNewOverlayBtn", onClick: this.props.onAddNewOverlay},
-              Locale.$STR("pixelPerfect.label.addNewLayer"))
-          )
         )
       )
     )

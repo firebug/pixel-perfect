@@ -90,6 +90,16 @@ body[collapsed="true"] {
   padding: 4px;
 }
 
+.overlayImage.add {
+  cursor: pointer;
+  font-size: 11px;
+  text-align: center;
+}
+
+.overlayImage.add:hover {
+  background-color: rgb(237, 237, 237);
+}
+
 /******************************************************************************/
 /* Overlay Image Box */
 
