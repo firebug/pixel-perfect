@@ -9,4 +9,4 @@ require.config({
 });
 
 // Load the main panel module
-requirejs(["main"]);
+requirejs(["popup"]);
