@@ -31,7 +31,7 @@ var PopupPanel = React.createClass({
     // with instructions
     if (!overlays || !overlays.length) {
       return DefaultContent({
-        version: this.props.version,
+        version: this.state.version,
         addOverlay: this.addOverlay
       });
     }
@@ -99,6 +99,7 @@ var DefaultContent = React.createFactory(React.createClass({
           ),
           TD({className: "defaultContentHeader"},
             SPAN({}, Locale.$STR("pixelPerfect.title")),
+            SPAN({}, " "),
             SPAN({}, this.props.version)
           )
         ),
