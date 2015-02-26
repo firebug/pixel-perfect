@@ -3,7 +3,7 @@
   "name": "pixel-perfect",
   "version": "2.0.0-alpha.0",
   "id": "pixelperfect@getfirebug.com",
-  "description": "Make your web development Pixel Perfect.",
+  "description": "Make your web development Pixel Perfect",
   "main": "index.js",
   "author": "Jan Odvarko",
   "engines": {
