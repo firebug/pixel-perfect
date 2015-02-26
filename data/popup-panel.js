@@ -29,20 +29,20 @@ var PopupPanel = React.createClass({
     return (
       TABLE({className: "", width: "100%"},
         TR({},
-          TD({className: "overlayFormCell"},
-            DIV({className: "overlayForm"},
-              OverlayForm({
-                overlay: selectedOverlay,
-                onAddNewOverlay: this.onAddNewOverlay,
-              })
-            )
-          ),
           TD({className: "overlayListCell"},
             DIV({className: "overlayList"},
               OverlayList({
                 overlays: this.state.overlays,
                 selection: this.state.selection,
                 setSelection: this.setSelection
+              })
+            )
+          ),
+          TD({className: "overlayFormCell"},
+            DIV({className: "overlayForm"},
+              OverlayForm({
+                overlay: selectedOverlay,
+                onAddNewOverlay: this.onAddNewOverlay,
               })
             )
           )

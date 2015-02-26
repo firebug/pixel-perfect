@@ -35,8 +35,8 @@ var OverlayList = React.createClass({
     return (
       TABLE({className: "overlayTable"},
         THEAD({className: "poolRow"},
-          TH({width: "20px"}),
-          TH({width: "96px"})
+          TH({width: "96px"}),
+          TH({width: "20px"})
         ),
         TBODY(null, rows)
       )
@@ -77,14 +77,14 @@ var OverlayRow = React.createFactory(React.createClass({
     return (
       TR({className: "overlayRow", onClick: this.props.onSelect},
         TD({className: "overlayCell"},
-          INPUT({type: "checkbox", checked: overlay.visible,
-            onChange: this.onVisibleChange})
-        ),
-        TD({className: "overlayCell"},
           DIV({className: "overlayImageBox" + selected},
             IMG({className: "overlayImage img-thumbnail", src: imageUrl}),
             DIV({className: "closeButton", onClick: this.props.onRemove})
           )
+        ),
+        TD({className: "overlayCell"},
+          INPUT({type: "checkbox", checked: overlay.visible,
+            onChange: this.onVisibleChange})
         )
       )
     )

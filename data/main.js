@@ -10,9 +10,11 @@ const { OverlayStore } = require("overlay-store");
 // Initial panel content rendering.
 var panel = React.render(PopupPanel(), document.body);
 
-// Handle refresh events sent from the chrome scope and refresh
-// the panel content. The data attached to the event represents
-// new state (or state changes) for the panel component.
+/**
+ * Handle refresh events sent from the chrome scope and refresh
+ * the panel content. The data attached to the event represents
+ * new state (or state changes) for the panel component.
+ */
 window.addEventListener("refresh", event => {
   var state = JSON.parse(event.data);
 
@@ -29,8 +31,10 @@ window.addEventListener("refresh", event => {
   panel.setState(state);
 });
 
-// Display the page content when it's ready to avoid flashing
-// during the page load.
+/**
+ * Display the page content when it's ready to avoid flashing
+ * during the page load.
+ */
 document.addEventListener("load", event => {
   document.body.removeAttribute("collapsed");
 }, true);
