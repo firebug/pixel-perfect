@@ -3,6 +3,10 @@
 /******************************************************************************/
 /* General */
 
+html, body {
+  height:100%;
+}
+
 body {
   background-color: white;
   padding: 0;
@@ -15,7 +19,7 @@ body {
 }
 
 body[collapsed="true"] {
-  display: none;
+  /*display: none;*/
 }
 
 /******************************************************************************/
@@ -134,4 +138,39 @@ body[collapsed="true"] {
 
 .overlayImageBox:hover .closeButton {
   display: block;
+}
+
+/******************************************************************************/
+/* Default Content (no overlays) */
+
+.defaultContentTable {
+  width: 100%;
+  height: 100%;
+}
+
+.defaultContentTable td {
+  text-align: center;
+  padding: 10px;
+}
+
+.defaultContentDesc {
+  color: black;
+}
+
+.defaultContentImage {
+}
+
+td.defaultContentHeader {
+  padding-left: 0;
+  font-size: 200%;
+  font-weight: bold;
+}
+
+.defaultContentMore {
+  color: rgb(0, 0, 255);
+  cursor: pointer;
+}
+
+.defaultContentMore:hover {
+  text-decoration: underline;
 }

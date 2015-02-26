@@ -10,7 +10,7 @@ const { OverlayForm } = require("overlay-form");
 const { OverlayStore } = require("overlay-store");
 
 // Shortcuts
-const { TABLE, TR, TD, DIV } = Reps.DOM;
+const { TABLE, TR, TD, DIV, IMG, SPAN } = Reps.DOM;
 
 /**
  * TODO docs
@@ -24,7 +24,14 @@ var PopupPanel = React.createClass({
   },
 
   render: function() {
+    var overlays = this.state.overlays;
     var selectedOverlay = this.getOverlay(this.state.selection);
+
+    // If there are no overlays, display default content
+    // with instructions
+    if (!overlays || !overlays.length) {
+      return DefaultContent({addOverlay: this.addOverlay});
+    }
 
     return (
       TABLE({className: "", width: "100%"},
@@ -74,6 +81,56 @@ var PopupPanel = React.createClass({
     OverlayStore.remove(overlay.id);
   },
 });
+
+/**
+ * xxxHonza: TODO docs
+ */
+var DefaultContent = React.createFactory(React.createClass({
+  render: function() {
+    return (
+      TABLE({className: "defaultContentTable"},
+        TR({},
+          TD({width: "10px;"},
+            IMG({className: "defaultContentImage",
+              src: "chrome://pixelperfect/skin/logo_32x32.png"})
+          ),
+          TD({className: "defaultContentHeader"},
+            // xxxHonza: localization, version
+            "Pixel Perfect 0.5.0-alpha.0"
+          )
+        ),
+        TR({},
+          TD({colSpan: 2},
+            DIV({className: "defaultContentDesc"},
+              Locale.$STR("pixelPerfect.help.desc")
+            )
+          )
+        ),
+        TR({},
+          TD({colSpan: 2},
+            DIV({className: "overlayImage add img-thumbnail"},
+              DIV({onClick: this.props.addOverlay},
+                Locale.$STR("pixelPerfect.label.addLayer")
+              )
+            )
+          )
+        ),
+        TR({},
+          TD({colSpan: 2},
+            SPAN({className: "defaultContentMore", onClick: this.onHomePage},
+              Locale.$STR("pixelPerfect.help.more")
+            )
+          )
+        )
+      )
+    )
+  },
+
+  onHomePage: function() {
+    var url = "https://github.com/firebug/pixel-perfect/blob/master/README.md";
+    postChromeMessage("open-tab", [url]);
+  }
+}));
 
 // Exports from this module
 exports.PopupPanel = React.createFactory(PopupPanel);
