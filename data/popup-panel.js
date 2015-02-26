@@ -27,8 +27,7 @@ var PopupPanel = React.createClass({
     var overlays = this.state.overlays;
     var selectedOverlay = this.getOverlay(this.state.selection);
 
-    // If there are no overlays, display default content
-    // with instructions
+    // If there are no overlays, display default content with instructions.
     if (!overlays || !overlays.length) {
       return DefaultContent({
         version: this.state.version,
@@ -52,7 +51,9 @@ var PopupPanel = React.createClass({
           ),
           TD({className: "overlayFormCell"},
             DIV({className: "overlayForm"},
-              OverlayForm({overlay: selectedOverlay})
+              OverlayForm({
+                overlay: selectedOverlay
+              })
             )
           )
         )

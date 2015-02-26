@@ -43,12 +43,6 @@ var OverlayList = React.createClass({
       )
     );
   },
-
-  // Commands
-
-  onSelect: function(overlay, event) {
-    this.props.setSelection(overlay);
-  },
 });
 
 /**

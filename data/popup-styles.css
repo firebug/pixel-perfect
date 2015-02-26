@@ -46,6 +46,7 @@ body[collapsed="true"] {
   font-size: 10px;
   margin-top: 5px;
   -moz-user-select: text;
+  max-width: 220px;
 }
 
 .form input {

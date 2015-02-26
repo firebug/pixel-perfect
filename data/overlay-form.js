@@ -23,11 +23,7 @@ var OverlayForm = React.createClass({
   },
 
   render: function() {
-    var overlay = this.state;
-    if (!overlay) {
-      return;
-    }
-
+    var overlay = this.props.overlay;
     return (
       TABLE({className: "form"},
         TR({},
