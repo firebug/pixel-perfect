@@ -5,7 +5,9 @@
 define(function(require, exports, module) {
 
 /**
- * TODO docs:
+ * This object represents a proxy to the real Store object
+ * in the chrome scope. All API calls are forwarded through
+ * a message manager (as asynchronous events).
  */
 const OverlayStore =
 /** @lends OverlayStore */
