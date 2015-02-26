@@ -26,7 +26,7 @@ var OverlayList = React.createClass({
       rows.push(OverlayRow({
         key: overlay.id,
         overlay: overlay,
-        selected: overlay == this.props.selection,
+        selected: overlay.id == this.props.selection,
         onSelect: this.onSelect.bind(this, overlay),
         onRemove: this.onRemove.bind(this, overlay)
       }));

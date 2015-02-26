@@ -18,19 +18,21 @@ const { TABLE, TR, TD, DIV } = Reps.DOM;
 var PopupPanel = React.createClass({
   getInitialState: function() {
     return {
-      overlays: this.props.overlays,
-      selection: this.props.selection,
+      overlays: [],
+      selection: null,
     };
   },
 
   render: function() {
+    var selectedOverlay = this.getOverlay(this.state.selection);
+
     return (
       TABLE({className: "", width: "100%"},
         TR({},
           TD({className: "overlayFormCell"},
             DIV({className: "overlayForm"},
               OverlayForm({
-                overlay: this.state.selection,
+                overlay: selectedOverlay,
                 onAddNewOverlay: this.onAddNewOverlay,
               })
             )
@@ -49,8 +51,17 @@ var PopupPanel = React.createClass({
     )
   },
 
+  getOverlay: function(id) {
+    var overlays = this.state.overlays;
+    for (var i=0; i<overlays.length; i++) {
+      if (overlays[i].id == id) {
+        return overlays[i];
+      }
+    }
+  },
+
   setSelection: function(overlay) {
-    this.state.selection = overlay;
+    this.state.selection = overlay.id;
     this.setState(this.state);
   },
 
