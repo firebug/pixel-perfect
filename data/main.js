@@ -22,10 +22,9 @@ window.addEventListener("refresh", event => {
   state.overlays = state.overlays || panel.state.overlays;
   state.selection = state.selection || panel.state.selection;
 
-  // Update default selection if necessary.
-  if (!state.selection && state.overlays && state.overlays.length > 0) {
-    state.selection = state.overlays[0].id;
-  }
+  // Update default selection if necessary (the current selected
+  // overlay might be removed).
+  state.selection = ensureSelection(state.overlays, state.selection);
 
   // Finally, update the UI panel component.
   panel.setState(state);
@@ -38,6 +37,18 @@ window.addEventListener("refresh", event => {
 document.addEventListener("load", event => {
   document.body.removeAttribute("collapsed");
 }, true);
+
+// Helpers
+
+function ensureSelection(overlays, id) {
+  for (var i=0; i<overlays.length; i++) {
+    if (overlays[i].id == id) {
+      return overlays[i].id;
+    }
+  }
+
+  return overlays.length ? overlays[0].id : null;
+}
 
 // Panel is loaded, let the chrome content send the first
 // 'refresh' message.

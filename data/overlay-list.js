@@ -14,10 +14,6 @@ const { TABLE, TBODY, TR, TD, INPUT, IMG, THEAD, TH, DIV } = Reps.DOM;
  * TODO docs
  */
 var OverlayList = React.createClass({
-  getInitialState: function() {
-    return { selection: null };
-  },
-
   render: function() {
     var rows = [];
     var overlays = this.props.overlays;
@@ -27,14 +23,14 @@ var OverlayList = React.createClass({
         key: overlay.id,
         overlay: overlay,
         selected: overlay.id == this.props.selection,
-        onSelect: this.onSelect.bind(this, overlay),
-        onRemove: this.onRemove.bind(this, overlay)
+        selectOverlay: this.props.selectOverlay.bind(this, overlay),
+        removeOverlay: this.props.removeOverlay.bind(this, overlay)
       }));
     });
 
     // An extra row for appending new layers.
     rows.push(AddOverlayRow({
-      onAdd: this.onAdd
+      addOverlay: this.props.addOverlay
     }));
 
     return (
@@ -52,14 +48,6 @@ var OverlayList = React.createClass({
 
   onSelect: function(overlay, event) {
     this.props.setSelection(overlay);
-  },
-
-  onRemove: function(overlay, event) {
-    OverlayStore.remove(overlay.id);
-  },
-
-  onAdd: function(event) {
-    OverlayStore.add();
   },
 });
 
@@ -84,7 +72,7 @@ var OverlayRow = React.createFactory(React.createClass({
     var selected = this.props.selected ? " selected" : "";
 
     return (
-      TR({className: "overlayRow", onClick: this.props.onSelect},
+      TR({className: "overlayRow", onClick: this.props.selectOverlay},
         TD({className: "overlayCell"},
           INPUT({type: "checkbox", checked: overlay.visible,
             onChange: this.onVisibleChange})
@@ -92,11 +80,21 @@ var OverlayRow = React.createFactory(React.createClass({
         TD({className: "overlayCell"},
           DIV({className: "overlayImageBox" + selected},
             IMG({className: "overlayImage img-thumbnail", src: imageUrl}),
-            DIV({className: "closeButton", onClick: this.props.onRemove})
+            DIV({className: "closeButton", onClick: this.onRemove})
           )
         )
       )
     )
+  },
+
+  onRemove: function(event) {
+    // Cancel the event to avoid selection of the to be removed overlay.
+    event.stopPropagation();
+    event.preventDefault();
+
+    // Execute provided callback, it's already bound with
+    // an overlay object associated with this row.
+    this.props.removeOverlay();
   },
 
   onVisibleChange: function(event) {
@@ -121,7 +119,7 @@ var AddOverlayRow = React.createFactory(React.createClass({
         TD({className: "overlayCell"},
           DIV({className: "overlayImageBox"},
             DIV({className: "overlayImage add img-thumbnail"},
-              DIV({onClick: this.props.onAdd},
+              DIV({onClick: this.props.addOverlay},
                 Locale.$STR("pixelPerfect.label.addLayer")
               )
             )

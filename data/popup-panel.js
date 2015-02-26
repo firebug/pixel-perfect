@@ -34,8 +34,9 @@ var PopupPanel = React.createClass({
               OverlayList({
                 overlays: this.state.overlays,
                 selection: this.state.selection,
-                setSelection: this.setSelection,
-                addOverlay: this.addOverlay
+                selectOverlay: this.selectOverlay,
+                addOverlay: this.addOverlay,
+                removeOverlay: this.removeOverlay
               })
             )
           ),
@@ -60,9 +61,17 @@ var PopupPanel = React.createClass({
 
   // Commands
 
-  setSelection: function(overlay) {
+  selectOverlay: function(overlay) {
     this.state.selection = overlay.id;
     this.setState(this.state);
+  },
+
+  addOverlay: function() {
+    OverlayStore.add();
+  },
+
+  removeOverlay: function(overlay) {
+    OverlayStore.remove(overlay.id);
   },
 });
 
