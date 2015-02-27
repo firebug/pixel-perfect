@@ -132,6 +132,7 @@ var DefaultContent = React.createFactory(React.createClass({
   },
 
   onHomePage: function() {
+    // xxxHonza: the URL should come from the package.json file
     var url = "https://github.com/firebug/pixel-perfect/blob/master/README.md";
     postChromeMessage("open-tab", [url]);
   }
