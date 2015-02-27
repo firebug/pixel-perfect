@@ -7,7 +7,7 @@
   "main": "index.js",
   "author": "Jan Odvarko (Mozilla Corp.)",
   "engines": {
-    "firefox": ">=37.0a2"
+    "firefox": ">=36.0"
   },
   "license": "BSD License",
   "icon": "chrome://pixelperfect/skin/logo_32x32.png",
