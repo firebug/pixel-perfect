@@ -9,6 +9,7 @@
   "engines": {
     "firefox": ">=36.0"
   },
+  "updateURL": "https://getfirebug.com/releases/pixelperfect/2.0/update.rdf",
   "license": "BSD License",
   "icon": "chrome://pixelperfect/skin/logo_32x32.png",
   "homepage": "https://github.com/firebug/pixel-perfect/wiki",
