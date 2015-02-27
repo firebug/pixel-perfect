@@ -5,11 +5,18 @@
   "id": "pixelperfectplugin@openhouseconcepts.com",
   "description": "Make your web development Pixel Perfect",
   "main": "index.js",
-  "author": "Jan Odvarko",
+  "author": "Jan Odvarko (Mozilla Corp.)",
   "engines": {
     "firefox": ">=37.0a2"
   },
   "license": "BSD License",
   "icon": "chrome://pixelperfect/skin/logo_32x32.png",
-  "preferences-branch": "pixelperfect"
+  "preferences-branch": "pixelperfect",
+  "preferences": [{
+    "name": "firstRun",
+    "title": "Execute first run experience",
+    "description": "Specifies whether to show notification message when the extension is installed or upgraded etc.",
+    "type": "bool",
+    "value": true
+  }]
 }
