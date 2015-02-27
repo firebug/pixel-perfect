@@ -1,6 +1,8 @@
 Pixel Perfect
 =============
 
+* Home Page: https://github.com/firebug/pixel-perfect/wiki
+
 License
 -------
 PixelPerfect is free and open source software distributed under the
