@@ -37,10 +37,11 @@ var NotificationContent = React.createFactory(React.createClass({
             ),
             BR(),
             DIV({className: "defaultContentDesc"},
-              "Pixel Perfect extension has been originally introduced for Firebug. " +
-              "This new version is built on top of native Firefox developer tools " +
-              "with improved user experience and features. Among other things, " +
-              "remote devices such as mobile phones also supported. Enjoy!"
+              "Pixel Perfect was originally introduced as an extension 
+              for Firebug. This new version is built on top of the native 
+              Firefox developer tools with improved user experience and features. 
+              It can now be used with or without Firebug but among other things, 
+              remote devices such as mobile phones are also supported. Enjoy"
             )
           )
         ),
