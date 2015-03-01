@@ -1,12 +1,13 @@
 /* See license.txt for terms of usage */
 
 /**
- * xxxHonza: TODO docs
+ * Content script for notification panel. It's only purpose is registering
+ * a listener for 'click' event and sending a message to the chrome scope
+ * if the user clicks on 'Start Pixel Perfect' link.
  */
 window.addEventListener("click", function(event) {
   var target = event.target;
   if (target.id == "start") {
-    console.log("from content " + target.id)
     self.port.emit("start");
   }
 })
