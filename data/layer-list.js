@@ -11,7 +11,9 @@ const { LayerStore } = require("layer-store");
 const { TABLE, TBODY, TR, TD, INPUT, IMG, THEAD, TH, DIV } = Reps.DOM;
 
 /**
- * TODO docs
+ * @react This template is responsible for displaying list of registered
+ * layers. The user can append new as well as remove an existing layer
+ * from/to the list.
  */
 var LayerList = React.createClass({
   render: function() {
@@ -46,7 +48,9 @@ var LayerList = React.createClass({
 });
 
 /**
- * TODO docs
+ * @react This template renders one layer (row) in the list.
+ * Every layer is rendered as a small thumbnail displaying
+ * the associated image.
  */
 var LayerRow = React.createFactory(React.createClass({
   getInitialState: function() {
@@ -103,7 +107,7 @@ var LayerRow = React.createFactory(React.createClass({
 }));
 
 /**
- * TODO docs
+ * @react This template renders a button for adding a new layer.
  */
 var AddLayerRow = React.createFactory(React.createClass({
   render: function() {
