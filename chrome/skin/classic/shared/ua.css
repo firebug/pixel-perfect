@@ -7,6 +7,7 @@ div:-moz-native-anonymous.moz-custom-content-container {
   position: absolute;
   cursor: move;
   pointer-events: auto;
+  line-height: 1px;
 }
 
 .pixelperfect-layer-box[drag] {
