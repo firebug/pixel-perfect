@@ -5,7 +5,7 @@ define(function(require, exports, module) {
 // Dependencies
 const React = require("react");
 const { PopupPanel } = require("popup-panel");
-const { OverlayStore } = require("overlay-store");
+const { LayerStore } = require("layer-store");
 
 // Initial panel content rendering.
 var panel = React.render(PopupPanel(), document.body);

@@ -5,9 +5,9 @@ define(function(require, exports, module) {
 // Dependencies
 const React = require("react");
 const { Reps } = require("./reps");
-const { OverlayList } = require("overlay-list");
-const { OverlayForm } = require("overlay-form");
-const { OverlayStore } = require("overlay-store");
+const { LayerList } = require("layer-list");
+const { LayerForm } = require("layer-form");
+const { LayerStore } = require("layer-store");
 
 // Shortcuts
 const { TABLE, TR, TD, DIV, IMG, SPAN } = Reps.DOM;
@@ -40,7 +40,7 @@ var PopupPanel = React.createClass({
         TR({},
           TD({className: "layerListCell"},
             DIV({className: "layerList"},
-              OverlayList({
+              LayerList({
                 layers: this.state.layers,
                 selection: this.state.selection,
                 selectLayer: this.selectLayer,
@@ -51,7 +51,7 @@ var PopupPanel = React.createClass({
           ),
           TD({className: "layerFormCell"},
             DIV({className: "layerForm"},
-              OverlayForm({
+              LayerForm({
                 layer: selectedLayer
               })
             )
@@ -78,11 +78,11 @@ var PopupPanel = React.createClass({
   },
 
   addLayer: function() {
-    OverlayStore.add();
+    LayerStore.add();
   },
 
   removeLayer: function(layer) {
-    OverlayStore.remove(layer.id);
+    LayerStore.remove(layer.id);
   },
 });
 

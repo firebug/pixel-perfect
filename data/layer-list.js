@@ -5,7 +5,7 @@ define(function(require, exports, module) {
 // Dependencies
 const React = require("react");
 const { Reps } = require("./reps");
-const { OverlayStore } = require("overlay-store");
+const { LayerStore } = require("layer-store");
 
 // Shortcuts
 const { TABLE, TBODY, TR, TD, INPUT, IMG, THEAD, TH, DIV } = Reps.DOM;
@@ -13,13 +13,13 @@ const { TABLE, TBODY, TR, TD, INPUT, IMG, THEAD, TH, DIV } = Reps.DOM;
 /**
  * TODO docs
  */
-var OverlayList = React.createClass({
+var LayerList = React.createClass({
   render: function() {
     var rows = [];
     var layers = this.props.layers;
 
     layers.forEach(layer => {
-      rows.push(OverlayRow({
+      rows.push(LayerRow({
         key: layer.id,
         layer: layer,
         selected: layer.id == this.props.selection,
@@ -29,12 +29,12 @@ var OverlayList = React.createClass({
     });
 
     // An extra row for appending new layers.
-    rows.push(AddOverlayRow({
+    rows.push(AddLayerRow({
       addLayer: this.props.addLayer
     }));
 
     return (
-      TABLE({className: "overlayTable"},
+      TABLE({className: "layerTable"},
         THEAD({className: "poolRow"},
           TH({width: "20px"}),
           TH({width: "96px"})
@@ -48,7 +48,7 @@ var OverlayList = React.createClass({
 /**
  * TODO docs
  */
-var OverlayRow = React.createFactory(React.createClass({
+var LayerRow = React.createFactory(React.createClass({
   getInitialState: function() {
     return {
       layer: {},
@@ -98,14 +98,14 @@ var OverlayRow = React.createFactory(React.createClass({
     this.setState(this.state);
 
     var props = { visible: value };
-    OverlayStore.modify(this.props.layer.id, props);
+    LayerStore.modify(this.props.layer.id, props);
   },
 }));
 
 /**
  * TODO docs
  */
-var AddOverlayRow = React.createFactory(React.createClass({
+var AddLayerRow = React.createFactory(React.createClass({
   render: function() {
     return (
       TR({className: "layerRow", onClick: this.props.onSelect},
@@ -125,5 +125,5 @@ var AddOverlayRow = React.createFactory(React.createClass({
 }));
 
 // Exports from this module
-exports.OverlayList = React.createFactory(OverlayList);
+exports.LayerList = React.createFactory(LayerList);
 });

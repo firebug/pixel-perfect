@@ -5,7 +5,7 @@ define(function(require, exports, module) {
 // Dependencies
 const React = require("react");
 const { Reps } = require("./reps");
-const { OverlayStore } = require("overlay-store");
+const { LayerStore } = require("layer-store");
 
 // Shortcuts
 const { SPAN, TABLE, TR, TD, BUTTON, INPUT, DIV } = Reps.DOM;
@@ -15,10 +15,10 @@ const { SPAN, TABLE, TR, TD, BUTTON, INPUT, DIV } = Reps.DOM;
  * Layer properties. Every modification is immediately propagated to
  * the storage {PixelPerfectStore}. Since the storage object lives
  * inside the chrome scope the access is done through a proxy object
- * {OverlayStore} that sends appropriate JSON messages using message
+ * {LayerStore} that sends appropriate JSON messages using message
  * manager.
  */
-var OverlayForm = React.createClass({
+var LayerForm = React.createClass({
   getInitialState: function() {
     return {};
   },
@@ -120,12 +120,12 @@ var OverlayForm = React.createClass({
     props[propName] = value;
 
     // Immediately update modified layer inside the store object.
-    // The {OverlayStore} object is used as a proxy to the real storage
+    // The {LayerStore} object is used as a proxy to the real storage
     // object that lives in the chrome scope.
-    OverlayStore.modify(this.props.layer.id, props);
+    LayerStore.modify(this.props.layer.id, props);
   },
 });
 
 // Exports from this module
-exports.OverlayForm = React.createFactory(OverlayForm);
+exports.LayerForm = React.createFactory(LayerForm);
 });
