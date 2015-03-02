@@ -17,6 +17,7 @@
   "license": "BSD License",
   "icon": "chrome://pixelperfect/skin/logo_32x32.png",
   "homepage": "https://github.com/firebug/pixel-perfect/wiki",
+  "forum": "https://groups.google.com/forum/#!forum/firebug",
   "repository": {
     "type": "git",
     "url": "https://github.com/firebug/pixel-perfect.git"
