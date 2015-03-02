@@ -15,7 +15,7 @@ const { SPAN, TABLE, TR, TD, BUTTON, INPUT, DIV } = Reps.DOM;
  * Layer properties. Every modification is immediately propagated to
  * the storage {PixelPerfectStore}. Since the storage object lives
  * inside the chrome scope the access is done through a proxy object
- * {OverlayStore} that sends appropriate JSON messages usin message
+ * {OverlayStore} that sends appropriate JSON messages using message
  * manager.
  */
 var OverlayForm = React.createClass({
@@ -24,21 +24,21 @@ var OverlayForm = React.createClass({
   },
 
   componentWillReceiveProps: function(nextProps) {
-    this.setState(nextProps.overlay);
+    this.setState(nextProps.layer);
   },
 
   render: function() {
-    var overlay = this.props.overlay;
+    var layer = this.props.layer;
     return (
       TABLE({className: "form"},
         TR({},
           TD({className: "right"}, Locale.$STR("pixelPerfect.label.opacity") + ":"),
           TD({},
-            INPUT({className: "opacity", type: "range", value: overlay.opacity,
+            INPUT({className: "opacity", type: "range", value: layer.opacity,
               onChange: this.onChange.bind(this, "opacity", "string")})
           ),
           TD({},
-            INPUT({className: "opacity-value", size: 3, value: overlay.opacity,
+            INPUT({className: "opacity-value", size: 3, value: layer.opacity,
               maxLength: 3,
               onChange: this.onChange.bind(this, "opacity", "number")})
           )
@@ -49,12 +49,12 @@ var OverlayForm = React.createClass({
             TABLE({className: "position"},
               TR({},
                 TD({},
-                  INPUT({size: 5, value: overlay.x, type: "number",
+                  INPUT({size: 5, value: layer.x, type: "number",
                     onChange: this.onChange.bind(this, "x", "number")})
                 ),
                 TD({className: "right"}, Locale.$STR("pixelPerfect.label.y") + ":"),
                 TD({},
-                  INPUT({size: 5, value: overlay.y, type: "number",
+                  INPUT({size: 5, value: layer.y, type: "number",
                     onChange: this.onChange.bind(this, "y", "number")})
                 )
               )
@@ -64,27 +64,27 @@ var OverlayForm = React.createClass({
         TR({},
           TD({className: "right"}, Locale.$STR("pixelPerfect.label.scale") + ":"),
           TD({colSpan: 2},
-            INPUT({size: 3, value: overlay.scale,
+            INPUT({size: 3, value: layer.scale,
               onChange: this.onChange.bind(this, "scale", "number")})
           )
         ),
         TR({},
           TD({className: "right"}, Locale.$STR("pixelPerfect.label.visible") + ":"),
           TD({colSpan: 2},
-            INPUT({type: "checkbox", checked: overlay.visible,
+            INPUT({type: "checkbox", checked: layer.visible,
               onChange: this.onChange.bind(this, "visible", "boolean")})
           )
         ),
         TR({},
           TD({className: "right"}, Locale.$STR("pixelPerfect.label.lock") + ":"),
           TD({colSpan: 2},
-            INPUT({type: "checkbox", checked: overlay.lock,
+            INPUT({type: "checkbox", checked: layer.lock,
               onChange: this.onChange.bind(this, "lock", "boolean")})
           )
         ),
         TR({},
           TD({colSpan: 3},
-            DIV({className: "url"}, overlay.url)
+            DIV({className: "url"}, layer.url)
           )
         )
       )
@@ -122,7 +122,7 @@ var OverlayForm = React.createClass({
     // Immediately update modified layer inside the store object.
     // The {OverlayStore} object is used as a proxy to the real storage
     // object that lives in the chrome scope.
-    OverlayStore.modify(this.props.overlay.id, props);
+    OverlayStore.modify(this.props.layer.id, props);
   },
 });
 

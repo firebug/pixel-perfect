@@ -16,15 +16,15 @@ const { TABLE, TBODY, TR, TD, INPUT, IMG, THEAD, TH, DIV } = Reps.DOM;
 var OverlayList = React.createClass({
   render: function() {
     var rows = [];
-    var overlays = this.props.overlays;
+    var layers = this.props.layers;
 
-    overlays.forEach(overlay => {
+    layers.forEach(layer => {
       rows.push(OverlayRow({
-        key: overlay.id,
-        overlay: overlay,
-        selected: overlay.id == this.props.selection,
-        selectOverlay: this.props.selectOverlay.bind(this, overlay),
-        removeOverlay: this.props.removeOverlay.bind(this, overlay)
+        key: layer.id,
+        layer: layer,
+        selected: layer.id == this.props.selection,
+        selectOverlay: this.props.selectOverlay.bind(this, layer),
+        removeOverlay: this.props.removeOverlay.bind(this, layer)
       }));
     });
 
@@ -51,7 +51,7 @@ var OverlayList = React.createClass({
 var OverlayRow = React.createFactory(React.createClass({
   getInitialState: function() {
     return {
-      overlay: {},
+      layer: {},
       selected: false
     };
   },
@@ -61,14 +61,14 @@ var OverlayRow = React.createFactory(React.createClass({
   },
 
   render: function() {
-    var overlay = this.props.overlay;
-    var imageUrl = overlay.url;
+    var layer = this.props.layer;
+    var imageUrl = layer.url;
     var selected = this.props.selected ? " selected" : "";
 
     return (
       TR({className: "overlayRow", onClick: this.props.selectOverlay},
         TD({className: "overlayCell"},
-          INPUT({type: "checkbox", checked: overlay.visible,
+          INPUT({type: "checkbox", checked: layer.visible,
             onChange: this.onVisibleChange})
         ),
         TD({className: "overlayCell"},
@@ -82,23 +82,23 @@ var OverlayRow = React.createFactory(React.createClass({
   },
 
   onRemove: function(event) {
-    // Cancel the event to avoid selection of the to be removed overlay.
+    // Cancel the event to avoid selection of the to be removed layer.
     event.stopPropagation();
     event.preventDefault();
 
     // Execute provided callback, it's already bound with
-    // an overlay object associated with this row.
+    // a layer object associated with this row.
     this.props.removeOverlay();
   },
 
   onVisibleChange: function(event) {
     var value = event.target.checked;
 
-    this.state.overlay["visible"] = value;
+    this.state.layer["visible"] = value;
     this.setState(this.state);
 
     var props = { visible: value };
-    OverlayStore.modify(this.props.overlay.id, props);
+    OverlayStore.modify(this.props.layer.id, props);
   },
 }));
 

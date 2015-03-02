@@ -18,17 +18,17 @@ const { TABLE, TR, TD, DIV, IMG, SPAN } = Reps.DOM;
 var PopupPanel = React.createClass({
   getInitialState: function() {
     return {
-      overlays: [],
+      layers: [],
       selection: null,
     };
   },
 
   render: function() {
-    var overlays = this.state.overlays;
-    var selectedOverlay = this.getLayer(this.state.selection);
+    var layers = this.state.layers;
+    var selectedLayer = this.getLayer(this.state.selection);
 
-    // If there are no overlays, display default content with instructions.
-    if (!overlays || !overlays.length) {
+    // If there are no layer, display default content with instructions.
+    if (!layers || !layers.length) {
       return DefaultContent({
         version: this.state.version,
         addOverlay: this.addOverlay
@@ -41,7 +41,7 @@ var PopupPanel = React.createClass({
           TD({className: "overlayListCell"},
             DIV({className: "overlayList"},
               OverlayList({
-                overlays: this.state.overlays,
+                layers: this.state.layers,
                 selection: this.state.selection,
                 selectOverlay: this.selectOverlay,
                 addOverlay: this.addOverlay,
@@ -52,7 +52,7 @@ var PopupPanel = React.createClass({
           TD({className: "overlayFormCell"},
             DIV({className: "overlayForm"},
               OverlayForm({
-                overlay: selectedOverlay
+                layer: selectedLayer
               })
             )
           )
@@ -62,18 +62,18 @@ var PopupPanel = React.createClass({
   },
 
   getLayer: function(id) {
-    var overlays = this.state.overlays;
-    for (var i=0; i<overlays.length; i++) {
-      if (overlays[i].id == id) {
-        return overlays[i];
+    var layers = this.state.layers;
+    for (var i=0; i<layers.length; i++) {
+      if (layers[i].id == id) {
+        return layers[i];
       }
     }
   },
 
   // Commands
 
-  selectOverlay: function(overlay) {
-    this.state.selection = overlay.id;
+  selectOverlay: function(layer) {
+    this.state.selection = layer.id;
     this.setState(this.state);
   },
 
@@ -81,8 +81,8 @@ var PopupPanel = React.createClass({
     OverlayStore.add();
   },
 
-  removeOverlay: function(overlay) {
-    OverlayStore.remove(overlay.id);
+  removeOverlay: function(layer) {
+    OverlayStore.remove(layer.id);
   },
 });
 
