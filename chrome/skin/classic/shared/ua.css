@@ -10,7 +10,7 @@ div:-moz-native-anonymous.moz-custom-content-container {
 }
 
 .pixelperfect-overlay-image[drag] {
-  border: 1px dashed rgb(51, 153, 255);
+  outline: 1px dashed rgb(51, 153, 255);
 }
 
 .pixelperfect-overlay-image[lock] {
