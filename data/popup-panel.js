@@ -38,8 +38,8 @@ var PopupPanel = React.createClass({
     return (
       TABLE({className: "", width: "100%"},
         TR({},
-          TD({className: "overlayListCell"},
-            DIV({className: "overlayList"},
+          TD({className: "layerListCell"},
+            DIV({className: "layerList"},
               OverlayList({
                 layers: this.state.layers,
                 selection: this.state.selection,
@@ -49,8 +49,8 @@ var PopupPanel = React.createClass({
               })
             )
           ),
-          TD({className: "overlayFormCell"},
-            DIV({className: "overlayForm"},
+          TD({className: "layerFormCell"},
+            DIV({className: "layerForm"},
               OverlayForm({
                 layer: selectedLayer
               })
@@ -113,7 +113,7 @@ var DefaultContent = React.createFactory(React.createClass({
         ),
         TR({},
           TD({colSpan: 2},
-            DIV({className: "overlayImage add img-thumbnail"},
+            DIV({className: "layerImage add img-thumbnail"},
               DIV({onClick: this.props.addLayer},
                 Locale.$STR("pixelPerfect.label.addLayer")
               )

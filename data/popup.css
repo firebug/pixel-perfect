@@ -25,8 +25,8 @@ body[collapsed="true"] {
 /******************************************************************************/
 /* Form */
 
-.overlayFormCell,
-.overlayListCell {
+.layerFormCell,
+.layerListCell {
   vertical-align: top;
   border-right: 1px solid lightgray;
 }
@@ -87,49 +87,49 @@ body[collapsed="true"] {
 }
 
 /******************************************************************************/
-/* Overlays */
+/* Layers */
 
-.overlayList {
+.layerList {
   overflow-y: auto;
   overflow-x: hidden;
   height: 230px;
   min-width: 150px;
 }
 
-.overlayCell {
+.layerCell {
   padding: 4px;
 }
 
-.overlayImage.add {
+.layerImage.add {
   cursor: pointer;
   font-size: 11px;
   text-align: center;
 }
 
-.overlayImage.add:hover {
+.layerImage.add:hover {
   background-color: rgb(237, 237, 237);
 }
 
 /******************************************************************************/
-/* Overlay Image Box */
+/* Layer Image Box */
 
-.overlayImageBox,
-.overlayImage {
+.layerImageBox,
+.layerImage {
   width: 96px;
 }
 
-.overlayImageBox {
+.layerImageBox {
   border: 3px solid transparent;
   border-radius: 4px;
   position: relative;
   display: inline-block;
 }
 
-.overlayImageBox.selected {
+.layerImageBox.selected {
   border: 3px solid rgb(76, 158, 217);
 }
 
-.overlayImageBox .closeButton {
+.layerImageBox .closeButton {
   display: none;
   cursor: pointer;
   background-image: url("img/close.svg");
@@ -142,12 +142,12 @@ body[collapsed="true"] {
   top: 0;
 }
 
-.overlayImageBox:hover .closeButton {
+.layerImageBox:hover .closeButton {
   display: block;
 }
 
 /******************************************************************************/
-/* Default Content (no overlays) */
+/* Default Content (no layers) */
 
 .defaultContentTable {
   width: 100%;

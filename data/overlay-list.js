@@ -66,14 +66,14 @@ var OverlayRow = React.createFactory(React.createClass({
     var selected = this.props.selected ? " selected" : "";
 
     return (
-      TR({className: "overlayRow", onClick: this.props.selectLayer},
-        TD({className: "overlayCell"},
+      TR({className: "layerRow", onClick: this.props.selectLayer},
+        TD({className: "layerCell"},
           INPUT({type: "checkbox", checked: layer.visible,
             onChange: this.onVisibleChange})
         ),
-        TD({className: "overlayCell"},
-          DIV({className: "overlayImageBox" + selected},
-            IMG({className: "overlayImage img-thumbnail", src: imageUrl}),
+        TD({className: "layerCell"},
+          DIV({className: "layerImageBox" + selected},
+            IMG({className: "layerImage img-thumbnail", src: imageUrl}),
             DIV({className: "closeButton", onClick: this.onRemove})
           )
         )
@@ -108,11 +108,11 @@ var OverlayRow = React.createFactory(React.createClass({
 var AddOverlayRow = React.createFactory(React.createClass({
   render: function() {
     return (
-      TR({className: "overlayRow", onClick: this.props.onSelect},
-        TD({className: "overlayCell"}),
-        TD({className: "overlayCell"},
-          DIV({className: "overlayImageBox"},
-            DIV({className: "overlayImage add img-thumbnail"},
+      TR({className: "layerRow", onClick: this.props.onSelect},
+        TD({className: "layerCell"}),
+        TD({className: "layerCell"},
+          DIV({className: "layerImageBox"},
+            DIV({className: "layerImage add img-thumbnail"},
               DIV({onClick: this.props.addLayer},
                 Locale.$STR("pixelPerfect.label.addLayer")
               )

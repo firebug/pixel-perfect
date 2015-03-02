@@ -50,7 +50,7 @@ var NotificationContent = React.createFactory(React.createClass({
         ),
         TR({},
           TD({colSpan: 2},
-            DIV({className: "overlayImage add img-thumbnail"},
+            DIV({className: "layerImage add img-thumbnail"},
               DIV({id: "start"},
                 "Start Pixel Perfect"
               )
