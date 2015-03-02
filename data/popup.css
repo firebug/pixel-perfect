@@ -53,6 +53,11 @@ body[collapsed="true"] {
   border: 1px solid lightgray;
 }
 
+.form input[type="number"] {
+  -moz-appearance: textfield;
+  width: 40px;
+}
+
 .form .buttonBar {
   padding-top: 18px;
 }

@@ -49,12 +49,12 @@ var OverlayForm = React.createClass({
             TABLE({className: "position"},
               TR({},
                 TD({},
-                  INPUT({size: 5, value: overlay.x,
+                  INPUT({size: 5, value: overlay.x, type: "number",
                     onChange: this.onChange.bind(this, "x", "number")})
                 ),
                 TD({className: "right"}, Locale.$STR("pixelPerfect.label.y") + ":"),
                 TD({},
-                  INPUT({size: 5, value: overlay.y,
+                  INPUT({size: 5, value: overlay.y, type: "number",
                     onChange: this.onChange.bind(this, "y", "number")})
                 )
               )
