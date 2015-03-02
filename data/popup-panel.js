@@ -31,7 +31,7 @@ var PopupPanel = React.createClass({
     if (!layers || !layers.length) {
       return DefaultContent({
         version: this.state.version,
-        addOverlay: this.addOverlay
+        addLayer: this.addLayer
       });
     }
 
@@ -43,9 +43,9 @@ var PopupPanel = React.createClass({
               OverlayList({
                 layers: this.state.layers,
                 selection: this.state.selection,
-                selectOverlay: this.selectOverlay,
-                addOverlay: this.addOverlay,
-                removeOverlay: this.removeOverlay
+                selectLayer: this.selectLayer,
+                addLayer: this.addLayer,
+                removeLayer: this.removeLayer
               })
             )
           ),
@@ -72,16 +72,16 @@ var PopupPanel = React.createClass({
 
   // Commands
 
-  selectOverlay: function(layer) {
+  selectLayer: function(layer) {
     this.state.selection = layer.id;
     this.setState(this.state);
   },
 
-  addOverlay: function() {
+  addLayer: function() {
     OverlayStore.add();
   },
 
-  removeOverlay: function(layer) {
+  removeLayer: function(layer) {
     OverlayStore.remove(layer.id);
   },
 });
@@ -114,7 +114,7 @@ var DefaultContent = React.createFactory(React.createClass({
         TR({},
           TD({colSpan: 2},
             DIV({className: "overlayImage add img-thumbnail"},
-              DIV({onClick: this.props.addOverlay},
+              DIV({onClick: this.props.addLayer},
                 Locale.$STR("pixelPerfect.label.addLayer")
               )
             )
