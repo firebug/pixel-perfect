@@ -25,7 +25,7 @@ var PopupPanel = React.createClass({
 
   render: function() {
     var overlays = this.state.overlays;
-    var selectedOverlay = this.getOverlay(this.state.selection);
+    var selectedOverlay = this.getLayer(this.state.selection);
 
     // If there are no overlays, display default content with instructions.
     if (!overlays || !overlays.length) {
@@ -61,7 +61,7 @@ var PopupPanel = React.createClass({
     )
   },
 
-  getOverlay: function(id) {
+  getLayer: function(id) {
     var overlays = this.state.overlays;
     for (var i=0; i<overlays.length; i++) {
       if (overlays[i].id == id) {
