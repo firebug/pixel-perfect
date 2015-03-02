@@ -8,7 +8,7 @@
   "author": "Jan Odvarko (Mozilla Corp.)",
   "contributors": [
     "Mike Buckley",
-    "Lorne Markham",
+    "Lorne Markham"
   ],
   "engines": {
     "firefox": ">=36.0"
