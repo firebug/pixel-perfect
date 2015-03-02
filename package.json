@@ -6,6 +6,10 @@
   "description": "Make your web development Pixel Perfect",
   "main": "index.js",
   "author": "Jan Odvarko (Mozilla Corp.)",
+  "contributors": [
+    "Mike Buckley",
+    "Lorne Markham",
+  ],
   "engines": {
     "firefox": ">=36.0"
   },
