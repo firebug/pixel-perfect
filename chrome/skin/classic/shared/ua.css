@@ -3,17 +3,17 @@
 div:-moz-native-anonymous.moz-custom-content-container {
 }
 
-.pixelperfect-layer-image {
+.pixelperfect-layer-box {
   position: absolute;
   cursor: move;
   pointer-events: auto;
 }
 
-.pixelperfect-layer-image[drag] {
+.pixelperfect-layer-box[drag] {
   outline: 1px dashed rgb(51, 153, 255);
 }
 
-.pixelperfect-layer-image[lock] {
+.pixelperfect-layer-box[lock] {
   cursor: default;
   pointer-events: none;
 }
