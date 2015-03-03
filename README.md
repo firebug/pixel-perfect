@@ -1,5 +1,7 @@
 Pixel Perfect
 =============
+
+[![Join the chat at https://gitter.im/firebug/pixel-perfect](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/firebug/pixel-perfect?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Make your web development Pixel Perfect.
 
 * Home Page: https://github.com/firebug/pixel-perfect/wiki
