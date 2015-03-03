@@ -43,7 +43,7 @@ var PopupPanel = React.createClass({
 
     // Render list of layers and layer form components.
     return (
-      TABLE({className: "", width: "100%"},
+      TABLE({className: "popupPanelTable"},
         TR({},
           TD({className: "layerListCell"},
             DIV({className: "layerList"},

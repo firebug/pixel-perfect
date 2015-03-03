@@ -36,7 +36,25 @@ window.addEventListener("refresh", event => {
  */
 document.addEventListener("load", event => {
   document.body.removeAttribute("collapsed");
+  onResize();
 }, true);
+
+/**
+ * Update height of the layer list according to the current height of
+ * the document.
+ *
+ * xxxHonza: can we ensure that the main table (popupPanelTable) has the
+ * right height that's equal to the height of the document and not bigger
+ * using just CSS?
+ */
+function onResize(event) {
+  var table = document.querySelector(".layerList");
+  if (table) {
+    table.setAttribute("style", "height: " + document.body.clientHeight + "px;");
+  }
+};
+
+window.addEventListener("resize", onResize);
 
 // Helpers
 
