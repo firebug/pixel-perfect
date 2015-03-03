@@ -10,8 +10,12 @@ const { Reps } = require("./reps");
 const { TABLE, TR, TD, DIV, IMG, SPAN, BR } = Reps.DOM;
 
 /**
- * xxxHonza: TODO docs
- * xxxHonza: localization
+ * @react This template implements UI for the first-run notification panel.
+ * The panel displays basic information about the extension and a link
+ * that can be used to open Pixel Perfect.
+ *
+ * xxxHonza: localization, all strings should be loaded from standard
+ * localization files (*.properties)
  */
 var NotificationContent = React.createFactory(React.createClass({
   render: function() {
@@ -47,7 +51,7 @@ var NotificationContent = React.createFactory(React.createClass({
         ),
         TR({},
           TD({colSpan: 2},
-            DIV({className: "overlayImage add img-thumbnail"},
+            DIV({className: "layerImage add img-thumbnail"},
               DIV({id: "start"},
                 "Start Pixel Perfect"
               )

@@ -9,8 +9,8 @@ define(function(require, exports, module) {
  * in the chrome scope. All API calls are forwarded through
  * a message manager (as asynchronous events).
  */
-const OverlayStore =
-/** @lends OverlayStore */
+const LayerStore =
+/** @lends LayerStore */
 {
   modify: function(id, props) {
     postChromeMessage("modify", [id, props]);
@@ -26,5 +26,5 @@ const OverlayStore =
 };
 
 // Exports from this module
-exports.OverlayStore = OverlayStore;
+exports.LayerStore = LayerStore;
 });

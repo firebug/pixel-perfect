@@ -5,54 +5,61 @@ define(function(require, exports, module) {
 // Dependencies
 const React = require("react");
 const { Reps } = require("./reps");
-const { OverlayList } = require("overlay-list");
-const { OverlayForm } = require("overlay-form");
-const { OverlayStore } = require("overlay-store");
+const { LayerList } = require("layer-list");
+const { LayerForm } = require("layer-form");
+const { LayerStore } = require("layer-store");
 
 // Shortcuts
 const { TABLE, TR, TD, DIV, IMG, SPAN } = Reps.DOM;
 
 /**
- * TODO docs
+ * @react This template implements basic layout for the popup panel.
+ * There are two components displayed:
+ * 1. Layer list: list of all registered layers.
+ * 2. Layer form: a form displaying properties of the selected layer.
+ *
+ * If there are no layers, the popup panel displays default content
+ * with instructions and one button: 'Add Layer'.
  */
 var PopupPanel = React.createClass({
   getInitialState: function() {
     return {
-      overlays: [],
+      layers: [],
       selection: null,
     };
   },
 
   render: function() {
-    var overlays = this.state.overlays;
-    var selectedOverlay = this.getOverlay(this.state.selection);
+    var layers = this.state.layers;
+    var selectedLayer = this.getLayer(this.state.selection);
 
-    // If there are no overlays, display default content with instructions.
-    if (!overlays || !overlays.length) {
+    // If there are no layer, display default content with instructions.
+    if (!layers || !layers.length) {
       return DefaultContent({
         version: this.state.version,
-        addOverlay: this.addOverlay
+        addLayer: this.addLayer
       });
     }
 
+    // Render list of layers and layer form components.
     return (
       TABLE({className: "", width: "100%"},
         TR({},
-          TD({className: "overlayListCell"},
-            DIV({className: "overlayList"},
-              OverlayList({
-                overlays: this.state.overlays,
+          TD({className: "layerListCell"},
+            DIV({className: "layerList"},
+              LayerList({
+                layers: this.state.layers,
                 selection: this.state.selection,
-                selectOverlay: this.selectOverlay,
-                addOverlay: this.addOverlay,
-                removeOverlay: this.removeOverlay
+                selectLayer: this.selectLayer,
+                addLayer: this.addLayer,
+                removeLayer: this.removeLayer
               })
             )
           ),
-          TD({className: "overlayFormCell"},
-            DIV({className: "overlayForm"},
-              OverlayForm({
-                overlay: selectedOverlay
+          TD({className: "layerFormCell"},
+            DIV({className: "layerForm"},
+              LayerForm({
+                layer: selectedLayer
               })
             )
           )
@@ -61,33 +68,35 @@ var PopupPanel = React.createClass({
     )
   },
 
-  getOverlay: function(id) {
-    var overlays = this.state.overlays;
-    for (var i=0; i<overlays.length; i++) {
-      if (overlays[i].id == id) {
-        return overlays[i];
+  getLayer: function(id) {
+    var layers = this.state.layers;
+    for (var i=0; i<layers.length; i++) {
+      if (layers[i].id == id) {
+        return layers[i];
       }
     }
   },
 
   // Commands
 
-  selectOverlay: function(overlay) {
-    this.state.selection = overlay.id;
+  selectLayer: function(layer) {
+    this.state.selection = layer.id;
     this.setState(this.state);
   },
 
-  addOverlay: function() {
-    OverlayStore.add();
+  addLayer: function() {
+    LayerStore.add();
   },
 
-  removeOverlay: function(overlay) {
-    OverlayStore.remove(overlay.id);
+  removeLayer: function(layer) {
+    LayerStore.remove(layer.id);
   },
 });
 
 /**
- * xxxHonza: TODO docs
+ * @react This template renders default content in case there are
+ * no layers registered. It displays basic instructions about how
+ * to begin with Pixel Perfect.
  */
 var DefaultContent = React.createFactory(React.createClass({
   render: function() {
@@ -113,8 +122,8 @@ var DefaultContent = React.createFactory(React.createClass({
         ),
         TR({},
           TD({colSpan: 2},
-            DIV({className: "overlayImage add img-thumbnail"},
-              DIV({onClick: this.props.addOverlay},
+            DIV({className: "layerImage add img-thumbnail"},
+              DIV({onClick: this.props.addLayer},
                 Locale.$STR("pixelPerfect.label.addLayer")
               )
             )
@@ -132,9 +141,7 @@ var DefaultContent = React.createFactory(React.createClass({
   },
 
   onHomePage: function() {
-    // xxxHonza: the URL should come from the package.json file
-    var url = "https://github.com/firebug/pixel-perfect/wiki";
-    postChromeMessage("open-tab", [url]);
+    postChromeMessage("open-homepage");
   }
 }));
 
