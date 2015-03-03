@@ -17,7 +17,7 @@ const { TABLE, TR, TD, DIV, IMG, SPAN, BR } = Reps.DOM;
 var NotificationContent = React.createFactory(React.createClass({
   render: function() {
     var style = {
-      "text-align": "justify"
+      "textAlign": "justify"
     }
 
     return (
