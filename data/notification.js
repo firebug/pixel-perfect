@@ -13,9 +13,6 @@ const { TABLE, TR, TD, DIV, IMG, SPAN, BR } = Reps.DOM;
  * @react This template implements UI for the first-run notification panel.
  * The panel displays basic information about the extension and a link
  * that can be used to open Pixel Perfect.
- *
- * xxxHonza: localization, all strings should be loaded from standard
- * localization files (*.properties)
  */
 var NotificationContent = React.createFactory(React.createClass({
   render: function() {
@@ -31,29 +28,20 @@ var NotificationContent = React.createFactory(React.createClass({
               src: "chrome://pixelperfect/skin/logo_32x32.png"})
           ),
           TD({className: "defaultContentHeader", style: style},
-            SPAN({}, "Pixel Perfect")
+            SPAN({}, this.props.title)
           )
         ),
         TR({},
           TD({colSpan: 2, style: style},
-            DIV({className: "defaultContentDesc"},
-              "Welcome to Pixel Perfect!"
-            ),
+            DIV({className: "defaultContentDesc"}, this.props.welcome),
             BR(),
-            DIV({className: "defaultContentDesc"},
-              "Pixel Perfect extension has been originally introduced for Firebug. " +
-              "This new version is built on top of native Firefox developer tools " +
-              "with improved user experience and features. Among other things, " +
-              "remote devices such as mobile phones also supported. Enjoy!"
-            )
+            DIV({className: "defaultContentDesc"}, this.props.description)
           )
         ),
         TR({},
           TD({colSpan: 2},
             DIV({className: "layerImage add img-thumbnail"},
-              DIV({id: "start"},
-                "Start Pixel Perfect"
-              )
+              DIV({id: "start"}, this.props.start)
             )
           )
         )
@@ -62,6 +50,8 @@ var NotificationContent = React.createFactory(React.createClass({
   },
 }));
 
-// Initial panel content rendering.
-React.render(NotificationContent(), document.body);
+// Get localized strings from body dataset and render
+// the panel UI.
+var locales = JSON.parse(document.body.dataset.locales);
+React.render(NotificationContent(locales), document.body);
 });

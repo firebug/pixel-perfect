@@ -10,5 +10,13 @@ window.addEventListener("click", function(event) {
   if (target.id == "start") {
     self.port.emit("start");
   }
-})
+});
+
+/**
+ * Receive localized strings from the chrome scope. These strings are
+ * used in the notification panel UI.
+ */
+self.port.on("locales", function(locales) {
+  document.body.setAttribute("data-locales", JSON.stringify(locales));
+});
 
