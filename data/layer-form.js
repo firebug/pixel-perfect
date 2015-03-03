@@ -69,13 +69,6 @@ var LayerForm = React.createClass({
           )
         ),
         TR({},
-          TD({className: "right"}, Locale.$STR("pixelPerfect.label.visible") + ":"),
-          TD({colSpan: 2},
-            INPUT({type: "checkbox", checked: layer.visible,
-              onChange: this.onChange.bind(this, "visible", "boolean")})
-          )
-        ),
-        TR({},
           TD({className: "right"}, Locale.$STR("pixelPerfect.label.lock") + ":"),
           TD({colSpan: 2},
             INPUT({type: "checkbox", checked: layer.lock,
@@ -88,7 +81,7 @@ var LayerForm = React.createClass({
           )
         )
       )
-    )
+    );
   },
 
   // Events

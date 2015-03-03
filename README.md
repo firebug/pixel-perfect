@@ -1,5 +1,6 @@
 Pixel Perfect
 =============
+Make your web development Pixel Perfect.
 
 * Home Page: https://github.com/firebug/pixel-perfect/wiki
 
@@ -16,6 +17,12 @@ Structure of the extension follows Jetpack standards.
 * **chrome** Stylesheets, localization files
 * **lib** Javascript files.
 * **test** Test files
+
+Hacking on Pixel Perfect 2
+--------------------------
+1. Install JPM: `npm install jpm -g` (read more about [installing jpm](https://developer.mozilla.org/en-US/Add-ons/SDK/Tools/jpm#Installation))
+2. Get Pixel Perfect source: `git clone https://github.com/firebug/pixel-perfect.git`
+3. Run `jpm run -b /path/to/Firefox/Nightly` in the source directory (learn more about [jmp commands](https://developer.mozilla.org/en-US/Add-ons/SDK/Tools/jpm#Command_reference))
 
 Further Resources
 -----------------
