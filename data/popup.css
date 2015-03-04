@@ -48,6 +48,7 @@ body[collapsed="true"] {
 
 .form {
   margin: 8px;
+  width: 240px;
 }
 
 .form td {
