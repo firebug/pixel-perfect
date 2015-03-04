@@ -116,8 +116,6 @@ var LayerList = React.createClass({
     var removed = layers.splice(originalIndex, 1)[0];
     layers.splice(targetIndex, 0, removed);
 
-    target.style.cursor = '-moz-grabbing';
-
     // Set new state (dragged image is at new index in the array).
     this.setState({layers: layers});
 
