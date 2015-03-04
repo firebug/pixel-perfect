@@ -192,3 +192,11 @@ td.defaultContentHeader {
 .defaultContentMore:hover {
   text-decoration: underline;
 }
+
+/******************************************************************************/
+/* Pixel Perfect Customer */
+
+.pixel-perfect-label{
+  font-weight: normal;
+  display: inline;
+}
