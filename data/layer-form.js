@@ -33,7 +33,8 @@ var LayerForm = React.createClass({
       TABLE({className: "form"},
         TR({},
           TD({className: "right"},
-            LABEL({className: "pixel-perfect-label", htmlFor: "pixel-perfect-opacity"}, 
+            LABEL({className: "pixel-perfect-label",
+              htmlFor: "pixel-perfect-opacity"}, 
               Locale.$STR("pixelPerfect.label.opacity") + ":"
             )
           ),
@@ -50,18 +51,21 @@ var LayerForm = React.createClass({
         ),
         TR({},
           TD({className: "right"},
-            LABEL({className: "pixel-perfect-label", htmlFor: "pixel-perfect-x"}, 
+            LABEL({className: "pixel-perfect-label",
+              htmlFor: "pixel-perfect-x"}, 
               Locale.$STR("pixelPerfect.label.x") + ":") 
           ),
           TD({className: "positionCell", colSpan: 2},
             TABLE({className: "position"},
               TR({},
                 TD({},
-                  INPUT({size: 5, value: layer.x, type: "number", id: "pixel-perfect-x",
+                  INPUT({size: 5, value: layer.x, type: "number",
+                    id: "pixel-perfect-x",
                     onChange: this.onChange.bind(this, "x", "number")})
                 ),
                 TD({className: "right"},
-                  LABEL({className: "pixel-perfect-label", htmlFor: "pixel-perfect-y"},
+                  LABEL({className: "pixel-perfect-label",
+                    htmlFor: "pixel-perfect-y"},
                     Locale.$STR("pixelPerfect.label.y") + ":")
                 ),
                 TD({},
@@ -75,7 +79,8 @@ var LayerForm = React.createClass({
         ),
         TR({},
           TD({className: "right"}, 
-            LABEL({className: "pixel-perfect-label", htmlFor: "pixel-perfect-scale"},
+            LABEL({className: "pixel-perfect-label",
+              htmlFor: "pixel-perfect-scale"},
               Locale.$STR("pixelPerfect.label.scale") + ":")
           ),
           TD({colSpan: 2},
@@ -86,7 +91,8 @@ var LayerForm = React.createClass({
         ),
         TR({},
           TD({className: "right"}, 
-            LABEL({className: "pixel-perfect-label", htmlFor: "pixel-perfect-lock"},
+            LABEL({className: "pixel-perfect-label",
+              htmlFor: "pixel-perfect-lock"},
               Locale.$STR("pixelPerfect.label.lock") + ":")
           ),
           TD({colSpan: 2},
