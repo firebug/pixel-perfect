@@ -8,7 +8,7 @@ const { Reps } = require("./reps");
 const { LayerStore } = require("layer-store");
 
 // Shortcuts
-const { SPAN, TABLE, TR, TD, BUTTON, INPUT, DIV } = Reps.DOM;
+const { SPAN, TABLE, TR, TD, BUTTON, INPUT, DIV, LABEL } = Reps.DOM;
 
 /**
  * @react This template implements a form allowing to see and modify
@@ -32,9 +32,14 @@ var LayerForm = React.createClass({
     return (
       TABLE({className: "form"},
         TR({},
-          TD({className: "right"}, Locale.$STR("pixelPerfect.label.opacity") + ":"),
+          TD({className: "right"},
+            LABEL({className: "pixel-perfect-label", htmlFor: "pixel-perfect-opacity"}, 
+              Locale.$STR("pixelPerfect.label.opacity") + ":"
+            )
+          ),
           TD({},
             INPUT({className: "opacity", type: "range", value: layer.opacity,
+              id: "pixel-perfect-opacity",
               onChange: this.onChange.bind(this, "opacity", "string")})
           ),
           TD({},
@@ -44,17 +49,24 @@ var LayerForm = React.createClass({
           )
         ),
         TR({},
-          TD({className: "right"}, Locale.$STR("pixelPerfect.label.x") + ":"),
+          TD({className: "right"},
+            LABEL({className: "pixel-perfect-label", htmlFor: "pixel-perfect-x"}, 
+              Locale.$STR("pixelPerfect.label.x") + ":") 
+          ),
           TD({className: "positionCell", colSpan: 2},
             TABLE({className: "position"},
               TR({},
                 TD({},
-                  INPUT({size: 5, value: layer.x, type: "number",
+                  INPUT({size: 5, value: layer.x, type: "number", id: "pixel-perfect-x",
                     onChange: this.onChange.bind(this, "x", "number")})
                 ),
-                TD({className: "right"}, Locale.$STR("pixelPerfect.label.y") + ":"),
+                TD({className: "right"},
+                  LABEL({className: "pixel-perfect-label", htmlFor: "pixel-perfect-y"},
+                    Locale.$STR("pixelPerfect.label.y") + ":")
+                ),
                 TD({},
                   INPUT({size: 5, value: layer.y, type: "number",
+                    id: "pixel-perfect-y",
                     onChange: this.onChange.bind(this, "y", "number")})
                 )
               )
@@ -62,16 +74,24 @@ var LayerForm = React.createClass({
           )
         ),
         TR({},
-          TD({className: "right"}, Locale.$STR("pixelPerfect.label.scale") + ":"),
+          TD({className: "right"}, 
+            LABEL({className: "pixel-perfect-label", htmlFor: "pixel-perfect-scale"},
+              Locale.$STR("pixelPerfect.label.scale") + ":")
+          ),
           TD({colSpan: 2},
             INPUT({size: 3, value: layer.scale,
+              id: "pixel-perfect-scale",
               onChange: this.onChange.bind(this, "scale", "number")})
           )
         ),
         TR({},
-          TD({className: "right"}, Locale.$STR("pixelPerfect.label.lock") + ":"),
+          TD({className: "right"}, 
+            LABEL({className: "pixel-perfect-label", htmlFor: "pixel-perfect-lock"},
+              Locale.$STR("pixelPerfect.label.lock") + ":")
+          ),
           TD({colSpan: 2},
             INPUT({type: "checkbox", checked: layer.lock,
+              id: "pixel-perfect-lock",
               onChange: this.onChange.bind(this, "lock", "boolean")})
           )
         ),
