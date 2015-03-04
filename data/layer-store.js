@@ -23,6 +23,10 @@ const LayerStore =
   remove: function(id) {
     postChromeMessage("remove", [id]);
   },
+
+  move: function(from, to) {
+    postChromeMessage("move", [from, to]);
+  },
 };
 
 // Exports from this module
