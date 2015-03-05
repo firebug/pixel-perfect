@@ -47,7 +47,7 @@ var LayerList = React.createClass({
       }));
     });
 
-    // An extra row that displays a button for appending new layers.
+    // Add one extra row that displays a button for appending new layers.
     rows.push(AddLayerRow({
       addLayer: this.props.addLayer
     }));
