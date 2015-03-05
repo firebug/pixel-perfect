@@ -1,4 +1,4 @@
-Pixel Perfect
+Pixel Perfect [![Build Status](https://api.travis-ci.org/firebug/pixel-perfect.png)](https://travis-ci.org/firebug/pixel-perfect)
 =============
 
 [![Join the chat at https://gitter.im/firebug/pixel-perfect](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/firebug/pixel-perfect?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
