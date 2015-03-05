@@ -12,7 +12,8 @@ const { TABLE, TR, TD, DIV, IMG, SPAN, BR } = Reps.DOM;
 /**
  * @react This template implements UI for the first-run notification panel.
  * The panel displays basic information about the extension and a link
- * that can be used to open Pixel Perfect.
+ * that can be used to open Pixel Perfect popup panel
+ * {@link PixelPerfectPopup}.
  */
 var NotificationContent = React.createFactory(React.createClass({
   render: function() {
@@ -50,8 +51,9 @@ var NotificationContent = React.createFactory(React.createClass({
   },
 }));
 
-// Get localized strings from body dataset and render
-// the panel UI.
+// Get localized strings from body dataset and render the panel UI.
+// The strings are set into the body element from the chrome scope.
+// See {@link FirstRun#initialize} method for more details.
 var locales = JSON.parse(document.body.dataset.locales);
 React.render(NotificationContent(locales), document.body);
 });

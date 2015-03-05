@@ -13,7 +13,8 @@ const { TABLE, TBODY, TR, TD, INPUT, IMG, THEAD, TH, DIV } = Reps.DOM;
 /**
  * @react This template is responsible for displaying list of registered
  * layers. The user can append new as well as remove an existing layer
- * from/to the list.
+ * from/to the list. It's also possible to change order of existing layers
+ * through drag and drop.
  */
 var LayerList = React.createClass({
   getInitialState: function() {
@@ -46,7 +47,7 @@ var LayerList = React.createClass({
       }));
     });
 
-    // An extra row for appending new layers.
+    // An extra row that displays a button for appending new layers.
     rows.push(AddLayerRow({
       addLayer: this.props.addLayer
     }));
@@ -139,7 +140,9 @@ var LayerList = React.createClass({
 /**
  * @react This template renders one layer (row) in the list.
  * Every layer is rendered as a small thumbnail displaying
- * the associated image.
+ * the associated image. The thumbnail also displays a close
+ * button when hovered by mouse. This button allows to remove
+ * the layer.
  */
 var LayerRow = React.createFactory(React.createClass({
   getInitialState: function() {

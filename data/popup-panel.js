@@ -15,11 +15,12 @@ const { TABLE, TR, TD, DIV, IMG, SPAN } = Reps.DOM;
 /**
  * @react This template implements basic layout for the popup panel.
  * There are two components displayed:
- * 1. Layer list: list of all registered layers.
- * 2. Layer form: a form displaying properties of the selected layer.
+ * 1. Layer list: list of all registered layers {@link Layerlist}.
+ * 2. Layer form: a form displaying properties of the selected layer
+ * {@link LayerForm}.
  *
  * If there are no layers, the popup panel displays default content
- * with instructions and one button: 'Add Layer'.
+ * with instructions and one button: 'Add Layer' {@link DefaultContent}.
  */
 var PopupPanel = React.createClass({
   getInitialState: function() {
@@ -33,7 +34,8 @@ var PopupPanel = React.createClass({
     var layers = this.state.layers;
     var selectedLayer = this.getLayer(this.state.selection);
 
-    // If there are no layer, display default content with instructions.
+    // If there are no layers, display default content with instructions
+    // about how to create one.
     if (!layers || !layers.length) {
       return DefaultContent({
         version: this.state.version,
@@ -41,7 +43,7 @@ var PopupPanel = React.createClass({
       });
     }
 
-    // Render list of layers and layer form components.
+    // Render list of layers and a form component.
     return (
       TABLE({className: "popupPanelTable"},
         TR({},
@@ -96,7 +98,7 @@ var PopupPanel = React.createClass({
 /**
  * @react This template renders default content in case there are
  * no layers registered. It displays basic instructions about how
- * to begin with Pixel Perfect.
+ * to start working with Pixel Perfect.
  */
 var DefaultContent = React.createFactory(React.createClass({
   render: function() {

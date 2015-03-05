@@ -13,9 +13,9 @@ const { SPAN, TABLE, TR, TD, BUTTON, INPUT, DIV, LABEL } = Reps.DOM;
 /**
  * @react This template implements a form allowing to see and modify
  * Layer properties. Every modification is immediately propagated to
- * the storage {PixelPerfectStore}. Since the storage object lives
+ * the storage {@link PixelPerfectStore}. Since the storage object lives
  * inside the chrome scope the access is done through a proxy object
- * {LayerStore} that sends appropriate JSON messages using message
+ * {@link LayerStore} that sends appropriate JSON messages using message
  * manager.
  */
 var LayerForm = React.createClass({
@@ -112,6 +112,11 @@ var LayerForm = React.createClass({
 
   // Events
 
+  /**
+   * Handler for changes made through the form's input fields.
+   * State of the current layer is updated and changed propagated
+   * to the {@link LayerStore}.
+   */
   onChange: function(propName, type, event) {
     var value;
 
@@ -139,8 +144,8 @@ var LayerForm = React.createClass({
     props[propName] = value;
 
     // Immediately update modified layer inside the store object.
-    // The {LayerStore} object is used as a proxy to the real storage
-    // object that lives in the chrome scope.
+    // The {@link LayerStore} object is used as a proxy to the real
+    // storage object that lives in the chrome scope.
     LayerStore.modify(this.props.layer.id, props);
   },
 });
