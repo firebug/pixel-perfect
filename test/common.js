@@ -37,7 +37,7 @@ function loadPixelPerfect() {
 function openTabAndPixelPerfect(url) {
   let deferred = defer();
 
-  loadPixelPerfect("about:blank").then(() => {
+  loadPixelPerfect().then(() => {
     getTabWhenReady(url).then(({tab}) => {
       StartButton.onTogglePixelPerfect().then(popup => {
         // Wait till the panel is attached to the backend
@@ -78,6 +78,8 @@ function click(frame, selector) {
  * Send message to the popup panel content scope (iframe). The communication
  * between the test scope (chrome) and the panel frame scope (content) is
  * done through a message manager in a form: request -> response.
+ *
+ * xxxHonza: support queuing of requests.
  */
 function postContentRequest(frame, type, data) {
   let deferred = defer();
