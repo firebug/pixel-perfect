@@ -22,16 +22,16 @@ const window = content;
 function messageListener(message) {
   const { type, data, origin, bubbles, cancelable } = message.data;
 
-  const event = new content.MessageEvent(type, {
+  const event = new window.MessageEvent(type, {
     bubbles: bubbles,
     cancelable: cancelable,
     data: data,
     origin: origin,
-    target: content,
-    source: content,
+    target: window,
+    source: window,
   });
 
-  content.dispatchEvent(event);
+  window.dispatchEvent(event);
 };
 
 addMessageListener("pixelperfect/event/message", messageListener);
@@ -62,7 +62,7 @@ const observer = {
     if (!docShell) {
       observerService.removeObserver(observer, topic);
     }
-    else if (document === content.document) {
+    else if (document === window.document) {
       if (topic === "content-document-interactive") {
         Cu.exportFunction(postChromeMessage, window, {
           defineAs: "postChromeMessage"
