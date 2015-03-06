@@ -104,13 +104,13 @@ var LayerForm = React.createClass({
         TR({},
           TD({className: "right"},
             LABEL({className: "pixel-perfect-label",
-              htmlFor: "pixel-perfect-inverse"},
-              Locale.$STR("pixelPerfect.label.inverse") + ":")
+              htmlFor: "pixel-perfect-invert"},
+              Locale.$STR("pixelPerfect.label.invert") + ":")
           ),
           TD({colSpan: 2},
-            INPUT({type: "checkbox", checked: layer.inverse,
-              id: "pixel-perfect-inverse",
-              onChange: this.onChange.bind(this, "inverse", "boolean")})
+            INPUT({type: "checkbox", checked: layer.invert,
+              id: "pixel-perfect-invert",
+              onChange: this.onChange.bind(this, "invert", "boolean")})
           )
         ),
         TR({},
