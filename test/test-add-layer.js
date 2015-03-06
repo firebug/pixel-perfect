@@ -48,8 +48,12 @@ exports["test Add Layer"] = function(assert, done) {
 
       // Wait till the layer is added to the backend.
       once(popup, "layer-added", response => {
+        console.log("pixel-perfect: layer-added");
+
         // Wait till the panel content is refreshed.
         once(popup, "panel-refreshed", () => {
+          console.log("pixel-perfect: panel-refreshed");
+
           let layer = result[0];
           let selector = "img.layerImage[data-id='" + layer.id + "']";
 
