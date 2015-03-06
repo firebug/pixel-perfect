@@ -3,17 +3,26 @@
 "use strict";
 
 const self = require("sdk/self");
+const options = require("@loader/options");
+
 const { Cu } = require("chrome");
-const { main, ToolboxChrome } = require("../lib/main.js");
+const { main } = require("../lib/main.js");
 const { defer, resolve } = require("sdk/core/promise");
 const { getTabWhenReady } = require("../lib/sdk/test/window.js");
 const { once } = require("sdk/event/core");
 const { StartButton } = require("../lib/start-button.js");
 
+Cu.import("resource://gre/modules/FileUtils.jsm");
+Cu.import("resource://gre/modules/NetUtil.jsm");
+Cu.import("resource://gre/modules/Services.jsm");
+
+// A flag indication whether the Pixel Perfect add-on is already loaded.
+// (loaded == main function executed)
 var loaded = false;
 
 /**
- * Load Pixel Perfect add-on.
+ * Load Pixel Perfect add-on. It's done only once if one of the previous
+ * running tests also executed this method.
  */
 function loadPixelPerfect() {
   // Do not load more than once.
@@ -62,14 +71,115 @@ function openTabAndPixelPerfect(url) {
   return deferred.promise;
 }
 
+/**
+ * Appends a new layer to the list. The layer is using logo PNG file
+ * coming from within the XPI package. The logo is copied out of the
+ * package to a temporary file since we need file: URL for the layer.
+ */
+function addNewLayer() {
+  let deferred = defer();
+
+  openTabAndPixelPerfect().then(config => {
+    let popup = config.popup;
+
+    // Copy extension's icon (it's part of the XPI package) into
+    // a temporary file (we need file: URL) and use it to create a layer.
+    let fileName = "pixelperfect-test-image.png";
+    let file = FileUtils.getFile("TmpD", [fileName]);
+    copyResource(options.metadata.icon, file).then(status => {
+      config.file = file;
+
+      // Add a new layer.
+      let result = sendPopupMessage(popup, "add", [file]);
+      config.layer = result[0];
+
+      // Wait till the layer is displayed in the panel content as well
+      // as registered on the backend.
+      waitForEvents(popup, ["layer-added", "panel-refreshed"]).then(() => {
+        deferred.resolve(config);
+      });
+    });
+  });
+
+  return deferred.promise;
+}
+
+/**
+ * Mimic a message sent from the popup panel frame content.
+ *
+ * @param {@link PixelPerfectPopup} popup Reference to the popup object
+ * @param {String} type ID of the message being sent.
+ * @param {Array} args List of arguments for the message.
+ *
+ * @returns Result value.
+ */
+function sendPopupMessage(popup, type, args) {
+  return popup.onMessage({data: {
+    type: type,
+    args: args
+  }});
+}
+
+/**
+ * Wait till all specified events are fired.
+ *
+ * @param {EventTarget} target The target object that fires events.
+ * @param {Array} events List of events to wait for.
+ *
+ * @returns A promise that is resolved when all specified events are
+ * fired.
+ */
+function waitForEvents(target, events) {
+  let deferred = defer();
+  let cache = new Set();
+
+  let createListener = (eventId) => {
+    return () => {
+      cache.delete(eventId);
+      if (cache.size == 0) {
+        deferred.resolve();
+      }
+    }
+  }
+
+  events.forEach(type => {
+    cache.add(type);
+    once(target, type, createListener(type));
+  });
+
+  return deferred.promise;
+}
+
+/**
+ * Helper function that copies logo PNG file from the XPI package into
+ * a temporary file, so it can be used for a new layer addition.
+ *
+ * @param chromeUrl Chrome URL of the PNG file inside the XPI package.
+ * @param targetFile Target temporary file to copy image data in to.
+ */
+function copyResource(chromeUrl, targetFile) {
+  let deferred = defer();
+  let channel = NetUtil.newChannel(chromeUrl);
+  NetUtil.asyncFetch(channel, function(inputStream, status) {
+    var output = FileUtils.openSafeFileOutputStream(targetFile);
+    NetUtil.asyncCopy(inputStream, output, status => {
+      deferred.resolve(status);
+    });
+  });
+
+  return deferred.promise;
+}
+
 // Panel Content API
 
-function exist(frame, selector) {
+function exist(popup, selector) {
+  let frame = popup.panelFrame;
   let data = { selector: selector }
   return postContentRequest(frame, "exist", data);
 }
 
-function click(frame, selector) {
+function click(popup, selector) {
+  let frame = popup.panelFrame;
   let data = { selector: selector }
   return postContentRequest(frame, "click", data);
 }
@@ -105,3 +215,6 @@ exports.loadPixelPerfect = loadPixelPerfect;
 exports.openTabAndPixelPerfect = openTabAndPixelPerfect;
 exports.exist = exist;
 exports.click = click;
+exports.addNewLayer = addNewLayer;
+exports.sendPopupMessage = sendPopupMessage;
+exports.waitForEvents = waitForEvents;
