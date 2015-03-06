@@ -34,7 +34,7 @@ var LayerForm = React.createClass({
         TR({},
           TD({className: "right"},
             LABEL({className: "pixel-perfect-label",
-              htmlFor: "pixel-perfect-opacity"}, 
+              htmlFor: "pixel-perfect-opacity"},
               Locale.$STR("pixelPerfect.label.opacity") + ":"
             )
           ),
@@ -52,8 +52,8 @@ var LayerForm = React.createClass({
         TR({},
           TD({className: "right"},
             LABEL({className: "pixel-perfect-label",
-              htmlFor: "pixel-perfect-x"}, 
-              Locale.$STR("pixelPerfect.label.x") + ":") 
+              htmlFor: "pixel-perfect-x"},
+              Locale.$STR("pixelPerfect.label.x") + ":")
           ),
           TD({className: "positionCell", colSpan: 2},
             TABLE({className: "position"},
@@ -78,7 +78,7 @@ var LayerForm = React.createClass({
           )
         ),
         TR({},
-          TD({className: "right"}, 
+          TD({className: "right"},
             LABEL({className: "pixel-perfect-label",
               htmlFor: "pixel-perfect-scale"},
               Locale.$STR("pixelPerfect.label.scale") + ":")
@@ -90,7 +90,7 @@ var LayerForm = React.createClass({
           )
         ),
         TR({},
-          TD({className: "right"}, 
+          TD({className: "right"},
             LABEL({className: "pixel-perfect-label",
               htmlFor: "pixel-perfect-lock"},
               Locale.$STR("pixelPerfect.label.lock") + ":")
@@ -99,6 +99,18 @@ var LayerForm = React.createClass({
             INPUT({type: "checkbox", checked: layer.lock,
               id: "pixel-perfect-lock",
               onChange: this.onChange.bind(this, "lock", "boolean")})
+          )
+        ),
+        TR({},
+          TD({className: "right"},
+            LABEL({className: "pixel-perfect-label",
+              htmlFor: "pixel-perfect-inverse"},
+              Locale.$STR("pixelPerfect.label.inverse") + ":")
+          ),
+          TD({colSpan: 2},
+            INPUT({type: "checkbox", checked: layer.inverse,
+              id: "pixel-perfect-inverse",
+              onChange: this.onChange.bind(this, "inverse", "boolean")})
           )
         ),
         TR({},
