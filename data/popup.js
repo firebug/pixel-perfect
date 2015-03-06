@@ -28,6 +28,8 @@ window.addEventListener("refresh", event => {
 
   // Finally, update the UI panel component.
   panel.setState(state);
+
+  postChromeMessage("panel-refreshed");
 });
 
 /**
