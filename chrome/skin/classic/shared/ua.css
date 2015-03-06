@@ -18,3 +18,7 @@ div:-moz-native-anonymous.moz-custom-content-container {
   cursor: default;
   pointer-events: none;
 }
+
+.pixelperfect-layer-box[invert] img {
+	filter: invert(100%);
+}
