@@ -46,12 +46,9 @@ exports["test Add Layer"] = function(assert, done) {
       // Check the layer store. There should be one layer at this moment.
       assert.equal(popup.store.layers.length, 1, "There must be one layer");
 
-      console.log("pixel-perfect: add-layer");
-
-      // Wait till the panel content is refreshed and shows the new layer.
-      once(popup, "panel-refreshed", () => {
-        console.log("pixel-perfect: panel-refreshed");
-
+      // Wait till the layer is displayed in the panel content as well
+      // as registered on the backend.
+      waitForLayerAddition(popup).then(() => {
         let layer = result[0];
         let selector = "img.layerImage[data-id='" + layer.id + "']";
 
@@ -69,6 +66,36 @@ exports["test Add Layer"] = function(assert, done) {
     });
   });
 };
+
+/**
+ * Wait for a layer being displayed in the popup panel as well as
+ * being registered on the backend.
+ *
+ * @param popup Reference to the popup panel
+ * @returns A promise being resolved when layer addition has finished.
+ */
+function waitForLayerAddition(popup) {
+  let deferred = defer();
+
+  let added = false;
+  let refreshed = false;
+
+  once(popup, "layer-added", () => {
+    added = true;
+    if (added && refreshed) {
+      deferred.resolve();
+    }
+  });
+
+  once(popup, "panel-refreshed", () => {
+    refreshed = true;
+    if (added && refreshed) {
+      deferred.resolve();
+    }
+  });
+
+  return deferred.promise;
+}
 
 function postMessage(popup, type, args) {
   return popup.onMessage({data: {
