@@ -46,26 +46,23 @@ exports["test Add Layer"] = function(assert, done) {
       // Check the layer store. There should be one layer at this moment.
       assert.equal(popup.store.layers.length, 1, "There must be one layer");
 
-      // Wait till the layer is added to the backend.
-      once(popup, "layer-added", response => {
-        console.log("pixel-perfect: layer-added");
+      console.log("pixel-perfect: add-layer");
 
-        // Wait till the panel content is refreshed.
-        once(popup, "panel-refreshed", () => {
-          console.log("pixel-perfect: panel-refreshed");
+      // Wait till the panel content is refreshed and shows the new layer.
+      once(popup, "panel-refreshed", () => {
+        console.log("pixel-perfect: panel-refreshed");
 
-          let layer = result[0];
-          let selector = "img.layerImage[data-id='" + layer.id + "']";
+        let layer = result[0];
+        let selector = "img.layerImage[data-id='" + layer.id + "']";
 
-          // Check if the panel content displays the new layer.
-          exist(popup.panelFrame, selector).then(result => {
-            assert.ok(result.data.args, "The layer must exist in the popup panel");
+        // Check if the panel content displays the new layer.
+        exist(popup.panelFrame, selector).then(result => {
+          assert.ok(result.data.args, "The layer must exist in the popup panel");
 
-            // Clean up
-            config.popup.hide().then(() => {
-              closeTab(config.tab);
-              done();
-            });
+          // Clean up
+          config.popup.hide().then(() => {
+            closeTab(config.tab);
+            done();
           });
         });
       });
