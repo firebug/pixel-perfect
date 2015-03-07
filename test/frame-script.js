@@ -8,15 +8,16 @@ const document = content.document;
 const window = content;
 
 /**
- * xxxHonza: TODO docs
+ * Listener for requests (messages) sent from a test (chrome scope).
+ * A response is always sent back together with a result.
  */
-function messageListener(message) {
+function requestListener(message) {
   const { type, data } = message.data;
 
   let element;
   let result;
 
-  // Perform requested check.
+  // Perform requested action.
   switch (type) {
   case "exist":
     element = document.querySelector(data.selector);
@@ -34,10 +35,10 @@ function messageListener(message) {
   postChromeResponse(type, result);
 };
 
-addMessageListener("test/request", messageListener);
+addMessageListener("test/request", requestListener);
 
 window.addEventListener("unload", event => {
-  removeMessageListener("test/request", messageListener);
+  removeMessageListener("test/request", requestListener);
 })
 
 /**
