@@ -2,7 +2,7 @@
 
 "use strict";
 
-const { exist, addNewLayer } = require("./common.js");
+const { exist, addNewLayer, removeLayer } = require("./common.js");
 const { closeTab } = require("sdk/tabs/utils");
 
 /**
@@ -22,9 +22,11 @@ exports["test Add Layer"] = function(assert, done) {
       assert.ok(result.data.args, "The layer must exist in the popup panel");
 
       // Clean up
-      config.popup.hide().then(() => {
-        closeTab(config.tab);
-        done();
+      removeLayer(popup, layer.id).then(() => {
+        config.popup.hide().then(() => {
+          closeTab(config.tab);
+          done();
+        });
       });
     });
   });
