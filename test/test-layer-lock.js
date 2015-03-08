@@ -20,7 +20,7 @@ exports["test Layer Lock"] = function(assert, done) {
     waitForEvents(popup, ["layer-modified"]).then(() => {
       // Get layer info from the backend.
       popup.front.getLayerInfo(layer.id).then(response => {
-        assert.equal(response.content.lock, "true",
+        assert.equal(response.content.box.lock, "true",
           "The layer must be locked");
 
         // Clean up

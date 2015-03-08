@@ -20,7 +20,7 @@ exports["test Layer Invert"] = function(assert, done) {
     waitForEvents(popup, ["layer-modified"]).then(result => {
       // Get layer info from the backend.
       popup.front.getLayerInfo(layer.id).then(response => {
-        assert.equal(response.content.invert, "true",
+        assert.equal(response.content.box.invert, "true",
           "The layer must be inverted");
 
         // Clean up
@@ -30,7 +30,7 @@ exports["test Layer Invert"] = function(assert, done) {
             done();
           });
         });
-      })
+      });
     });
   });
 };
