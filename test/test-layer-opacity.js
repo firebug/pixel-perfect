@@ -8,13 +8,13 @@ const { closeTab } = require("sdk/tabs/utils");
 /**
  * xxxHonza TODO docs
  */
-exports["test Layer Scale"] = function(assert, done) {
+exports["test Layer Opacity"] = function(assert, done) {
   addNewLayer().then(config => {
     let popup = config.popup;
     let layer = config.layer;
 
     // xxxHonza: the scale change should be done through the form UI.
-    let props = { scale: 2 };
+    let props = { opacity: 15 };
     sendPopupMessage(popup, "modify", [layer.id, props]);
 
     // Wait till the layer is modified on the backend.
@@ -22,9 +22,9 @@ exports["test Layer Scale"] = function(assert, done) {
       // Get layer info from the backend.
       popup.front.getLayerInfo(layer.id).then(response => {
         let style = response.content.image.style;
-        let index = style.indexOf("transform:scale(2)");
+        let index = style.indexOf("opacity:0.15");
 
-        assert.ok(index > -1, "Layer's image must be scaled");
+        assert.ok(index > -1, "Layer's image opacity must be set");
 
         // Clean up
         removeLayer(popup, layer.id).then(() => {
