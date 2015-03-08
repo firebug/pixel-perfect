@@ -18,11 +18,8 @@ exports["test Layer Invert"] = function(assert, done) {
 
     // Wait till the layer is modified on the backend.
     waitForEvents(popup, ["layer-modified"]).then(result => {
-      console.log("!!! waitForEvents (invert) " + layer.id, result);
-
       // Get layer info from the backend.
       popup.front.getLayerInfo(layer.id).then(response => {
-        console.log("!!! invert", response)
         assert.equal(response.content.invert, "true",
           "The layer must be inverted");
 
