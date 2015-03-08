@@ -105,6 +105,25 @@ function addNewLayer() {
 }
 
 /**
+ * xxxHonza: TODO docs
+ *
+ * @param popup
+ * @param id
+ * @returns
+ */
+function removeLayer(popup, id) {
+  let deferred = defer();
+
+  sendPopupMessage(popup, "remove", [id]);
+
+  waitForEvents(popup, ["panel-refreshed", "layer-removed"]).then(() => {
+    deferred.resolve();
+  });
+
+  return deferred.promise;
+}
+
+/**
  * Mimic a message sent from the popup panel frame content.
  *
  * @param {@link PixelPerfectPopup} popup Reference to the popup object
@@ -218,3 +237,4 @@ exports.click = click;
 exports.addNewLayer = addNewLayer;
 exports.sendPopupMessage = sendPopupMessage;
 exports.waitForEvents = waitForEvents;
+exports.removeLayer = removeLayer;

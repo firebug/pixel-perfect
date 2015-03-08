@@ -2,7 +2,7 @@
 
 "use strict";
 
-const { click, addNewLayer, waitForEvents } = require("./common.js");
+const { click, addNewLayer, waitForEvents, removeLayer } = require("./common.js");
 const { closeTab } = require("sdk/tabs/utils");
 
 /**
@@ -24,11 +24,13 @@ exports["test Layer Lock"] = function(assert, done) {
           "The layer must be locked");
 
         // Clean up
-        config.popup.hide().then(() => {
-          closeTab(config.tab);
-          done();
+        removeLayer(popup, layer.id).then(() => {
+          config.popup.destroy().then(() => {
+            closeTab(config.tab);
+            done();
+          });
         });
-      })
+      });
     });
   });
 };
