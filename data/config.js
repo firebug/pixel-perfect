@@ -4,7 +4,7 @@
 require.config({
   baseUrl: ".",
   paths: {
-    "react": "./lib/react/react.min",
+    "react": "./lib/react/react",
   }
 });
 
