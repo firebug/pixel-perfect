@@ -6,20 +6,12 @@ Pixel Perfect [![Build Status](https://api.travis-ci.org/firebug/pixel-perfect.p
 Make your web development Pixel Perfect.
 
 * Home Page: https://github.com/firebug/pixel-perfect/wiki
+* Developer Guide: https://github.com/firebug/pixel-perfect/wiki/Developer-Guide
 
 License
 -------
 PixelPerfect is free and open source software distributed under the
 [BSD License](https://github.com/firebug/pixel-perfect/blob/master/license.txt).
-
-Repository Structure
---------------------
-Structure of the extension follows Jetpack standards.
-
-* **data** HTML pages
-* **chrome** Stylesheets, localization files
-* **lib** Javascript files.
-* **test** Test files
 
 Hacking on Pixel Perfect 2
 --------------------------
