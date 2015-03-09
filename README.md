@@ -27,6 +27,8 @@ Hacking on Pixel Perfect 2
 2. Get Pixel Perfect source: `git clone https://github.com/firebug/pixel-perfect.git`
 3. Run `jpm run -b nightly` in the source directory (learn more about [jpm commands](https://developer.mozilla.org/en-US/Add-ons/SDK/Tools/jpm#Command_reference))
 
+See also Pixel Perfect [Developer Guide](https://github.com/firebug/pixel-perfect/wiki/Developer-Guide)
+
 Further Resources
 -----------------
 
