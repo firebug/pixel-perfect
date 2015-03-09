@@ -1,6 +1,7 @@
 /* See license.txt for terms of usage */
 
 div:-moz-native-anonymous.moz-custom-content-container {
+  position: absolute;
 }
 
 .pixelperfect-layer-box {
