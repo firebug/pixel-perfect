@@ -20,5 +20,5 @@ div:-moz-native-anonymous.moz-custom-content-container {
 }
 
 .pixelperfect-layer-box[invert] img {
-	filter: invert(100%);
+  filter: invert(100%);
 }
