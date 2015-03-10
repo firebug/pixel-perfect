@@ -14,4 +14,4 @@
 .project
 
 # Existing packages
-.xpi
+*.xpi
