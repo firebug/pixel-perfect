@@ -11,6 +11,9 @@
     "Lorne Markham",
     "Alistair Laing"
   ],
+  "translators": [
+    "YFdyh000 (zh-CN)"
+  ],
   "engines": {
     "firefox": ">=36.0"
   },
