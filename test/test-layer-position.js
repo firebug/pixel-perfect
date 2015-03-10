@@ -6,14 +6,16 @@ const { click, addNewLayer, waitForEvents, removeLayer, sendPopupMessage } = req
 const { closeTab } = require("sdk/tabs/utils");
 
 /**
- * xxxHonza TODO docs
+ * This test is responsible for verifying layer's position. The user
+ * can change the position using input fields available in Pixel
+ * Perfect popup panel.
  */
 exports["test Layer Position"] = function(assert, done) {
   addNewLayer().then(config => {
     let popup = config.popup;
     let layer = config.layer;
 
-    // xxxHonza: the scale change should be done through the form UI.
+    // xxxHonza: the position change should be done through the form UI.
     let props = { x: 15, y:15 };
     sendPopupMessage(popup, "modify", [layer.id, props]);
 

@@ -6,7 +6,10 @@ const { click, addNewLayer, waitForEvents, removeLayer } = require("./common.js"
 const { closeTab } = require("sdk/tabs/utils");
 
 /**
- * xxxHonza TODO docs
+ * This test is responsible for verifying layer lock option.
+ * The user can lock any layer using 'Lock' checkbox that is
+ * available in Pixel Perfect popup panel. Locked layers can't
+ * be dragged.
  */
 exports["test Layer Lock"] = function(assert, done) {
   addNewLayer().then(config => {

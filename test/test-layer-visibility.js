@@ -6,7 +6,9 @@ const { click, addNewLayer, waitForEvents, removeLayer } = require("./common.js"
 const { closeTab } = require("sdk/tabs/utils");
 
 /**
- * xxxHonza TODO docs
+ * This test is responsible for verifying layer's visibility. The user
+ * can set the visibility using a checkbox that is available in Pixel
+ * Perfect popup panel.
  */
 exports["test Layer Visibility"] = function(assert, done) {
   addNewLayer().then(config => {

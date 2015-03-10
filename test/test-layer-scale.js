@@ -6,7 +6,9 @@ const { click, addNewLayer, waitForEvents, removeLayer, sendPopupMessage } = req
 const { closeTab } = require("sdk/tabs/utils");
 
 /**
- * xxxHonza TODO docs
+ * This test is responsible for verifying layer's scale. The user
+ * can set the scale using input field that are available in Pixel
+ * Perfect popup panel.
  */
 exports["test Layer Scale"] = function(assert, done) {
   addNewLayer().then(config => {

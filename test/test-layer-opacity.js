@@ -6,14 +6,16 @@ const { click, addNewLayer, waitForEvents, removeLayer, sendPopupMessage } = req
 const { closeTab } = require("sdk/tabs/utils");
 
 /**
- * xxxHonza TODO docs
+ * This test is responsible for verifying layer's opacity. The user
+ * can change opacity (transparency) of any layer using 'Opacity' slider
+ * that is available in Pixel Perfect popup panel.
  */
 exports["test Layer Opacity"] = function(assert, done) {
   addNewLayer().then(config => {
     let popup = config.popup;
     let layer = config.layer;
 
-    // xxxHonza: the scale change should be done through the form UI.
+    // xxxHonza: the opacity change should be done through the form UI.
     let props = { opacity: 15 };
     sendPopupMessage(popup, "modify", [layer.id, props]);
 

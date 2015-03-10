@@ -6,7 +6,9 @@ const { click, addNewLayer, waitForEvents, removeLayer } = require("./common.js"
 const { closeTab } = require("sdk/tabs/utils");
 
 /**
- * xxxHonza TODO docs
+ * This test is responsible for verifying layer's inversion.
+ * The user can invert a layer using 'Invert' checkbox that
+ * is available in Pixel Perfect popup panel.
  */
 exports["test Layer Invert"] = function(assert, done) {
   addNewLayer().then(config => {

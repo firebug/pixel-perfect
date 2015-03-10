@@ -105,11 +105,14 @@ function addNewLayer() {
 }
 
 /**
- * xxxHonza: TODO docs
+ * Remove an existing layer and wait till it's removed from the backend
+ * and the popup panel is refreshed.
  *
- * @param popup
- * @param id
- * @returns
+ * @param {@link PixelPerfectPopup} popup Reference to the popup panel
+ * @param {String} id ID of the panel to be removed.
+ *
+ * @returns {Promise} A promise that is resolved when the layer is removed
+ * on the backend and the popup panel refreshed.
  */
 function removeLayer(popup, id) {
   let deferred = defer();
