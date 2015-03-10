@@ -4,7 +4,7 @@
 
 const { StartButton } = require("../lib/start-button.js");
 const { loadPixelPerfect } = require("./common.js");
-const { getTabWhenReady } = require("../lib/sdk/test/window.js");
+const { getTabWhenReady } = require("firebug.sdk/lib/test/window.js");
 const { once } = require("sdk/event/core");
 const { closeTab } = require("sdk/tabs/utils");
 

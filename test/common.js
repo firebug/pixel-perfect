@@ -8,7 +8,7 @@ const options = require("@loader/options");
 const { Cu } = require("chrome");
 const { main } = require("../lib/main.js");
 const { defer, resolve } = require("sdk/core/promise");
-const { getTabWhenReady } = require("../lib/sdk/test/window.js");
+const { getTabWhenReady } = require("firebug.sdk/lib/test/window.js");
 const { once } = require("sdk/event/core");
 const { StartButton } = require("../lib/start-button.js");
 

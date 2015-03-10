@@ -22,15 +22,20 @@
     "type": "git",
     "url": "https://github.com/firebug/pixel-perfect.git"
   },
+  "dependencies": {
+    "firebug.sdk": "0.5.1"
+  },
   "bugs": {
     "url": "https://github.com/firebug/pixel-perfect/issues"
   },
   "preferences-branch": "pixelperfect",
-  "preferences": [{
-    "name": "firstRun",
-    "title": "Execute first run experience",
-    "description": "Specifies whether to show notification message when the extension is installed or upgraded etc.",
-    "type": "bool",
-    "value": true
-  }]
+  "preferences": [
+    {
+      "name": "firstRun",
+      "title": "Execute first run experience",
+      "description": "Specifies whether to show notification message when the extension is installed or upgraded etc.",
+      "type": "bool",
+      "value": true
+    }
+  ]
 }

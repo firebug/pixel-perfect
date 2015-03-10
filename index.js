@@ -6,7 +6,7 @@
  * This file is specified as the 'main' module in package.json
  * MDN: https://developer.mozilla.org/en-US/Add-ons/SDK/Tools/package_json
  */
-let FBTrace = require("./lib/sdk/core/trace.js").FBTrace;
+let FBTrace = require("firebug.sdk/lib/core/trace.js").FBTrace;
 let { main, Loader, override } = require("toolkit/loader");
 
 // Get default loader options and create one new 'FBTrace' global,
