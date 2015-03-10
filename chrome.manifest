@@ -2,3 +2,4 @@ content pixelperfect             chrome/content/
 skin pixelperfect classic/1.0    chrome/skin/classic/shared/
 
 locale  pixelperfect en-US       chrome/locale/en-US/
+locale  pixelperfect zh-CN       chrome/locale/zh-CN/
