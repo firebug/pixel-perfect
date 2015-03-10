@@ -164,8 +164,8 @@ var LayerRow = React.createFactory(React.createClass({
     return (
       TR({className: "layerRow", onClick: this.props.selectLayer},
         TD({className: "layerCell"},
-          INPUT({type: "checkbox", checked: layer.visible,
-            onChange: this.onVisibleChange})
+          INPUT({className: "visibility", type: "checkbox",
+            checked: layer.visible, onChange: this.onVisibleChange})
         ),
         TD({className: "layerCell"},
           DIV({className: "layerImageBox" + selected},
