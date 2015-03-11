@@ -15,7 +15,7 @@
     "YFdyh000 (zh-CN)"
   ],
   "engines": {
-    "firefox": ">=36.0"
+    "firefox": ">=36.0 <=40.0"
   },
   "license": "BSD License",
   "icon": "chrome://pixelperfect/skin/logo_32x32.png",
