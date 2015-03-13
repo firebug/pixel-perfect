@@ -8,6 +8,8 @@ Make your web development Pixel Perfect.
 * Home Page: https://github.com/firebug/pixel-perfect/wiki
 * Developer Guide: https://github.com/firebug/pixel-perfect/wiki/Developer-Guide
 
+Pixel Perfect is Firefox extension built on top of native developer tools in Firefox.
+
 License
 -------
 PixelPerfect is free and open source software distributed under the
