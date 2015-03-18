@@ -2,7 +2,12 @@
 
 "use strict";
 
-(function({content, addMessageListener, sendAsyncMessage, removeMessageListener}) {
+(function({
+  content,
+  addMessageListener,
+  sendAsyncMessage,
+  removeMessageListener,
+  addEventListener}) {
 
 const Cu = Components.utils;
 const Cc = Components.classes;
@@ -36,10 +41,6 @@ function messageListener(message) {
 
 addMessageListener("pixelperfect/event/message", messageListener);
 
-window.addEventListener("unload", event => {
-  removeMessageListener("firebug/event/message", messageListener);
-})
-
 /**
  * Send a message back to the parent panel (chrome scope).
  */
@@ -52,32 +53,20 @@ function postChromeMessage(type, args, objects) {
   sendAsyncMessage("message", data, objects);
 }
 
-const observer = {
-  observe: (document, topic, data) => {
-    // When frame associated with message manager is removed from document `docShell`
-    // is set to `null` but observer is still kept alive. At this point accessing
-    // `content.document` throws "can't access dead object" exceptions. In order to
-    // avoid leaking observer and logged errors observer is going to be removed when
-    // `docShell` is set to `null`.
-    if (!docShell) {
-      observerService.removeObserver(observer, topic);
-    }
-    else if (document === window.document) {
-      if (topic === "content-document-interactive") {
-        Cu.exportFunction(postChromeMessage, window, {
-          defineAs: "postChromeMessage"
-        });
-
-        sendAsyncMessage("sdk/event/ready", {
-          type: "ready",
-          readyState: document.readyState,
-          uri: document.documentURI
-        });
-      }
-    }
+/**
+ * Export 'postChromeMessage' function to the frame content as soon
+ * as it's loaded. This function allows sending messages from the
+ * frame's content directly to the chrome scope.
+ */
+addEventListener("DOMContentLoaded", event => {
+  let postChromeMessage = (type, args, objects) => {
+    sendAsyncMessage("message", { type: type, args: args }, objects);
   }
-};
 
-observerService.addObserver(observer, "content-document-interactive", false);
+  Cu.exportFunction(postChromeMessage, window, {
+    defineAs: "postChromeMessage"
+  });
+}, true);
 
+// End of scope
 })(this);
