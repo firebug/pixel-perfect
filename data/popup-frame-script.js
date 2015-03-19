@@ -13,9 +13,6 @@ const Cu = Components.utils;
 const Cc = Components.classes;
 const Ci = Components.interfaces;
 
-const observerService = Cc["@mozilla.org/observer-service;1"].
-  getService(Ci.nsIObserverService);
-
 const document = content.document;
 const window = content;
 
