@@ -56,10 +56,6 @@ function postChromeMessage(type, args, objects) {
  * frame's content directly to the chrome scope.
  */
 addEventListener("DOMContentLoaded", event => {
-  let postChromeMessage = (type, args, objects) => {
-    sendAsyncMessage("message", { type: type, args: args }, objects);
-  }
-
   Cu.exportFunction(postChromeMessage, window, {
     defineAs: "postChromeMessage"
   });
