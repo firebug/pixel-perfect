@@ -26,7 +26,7 @@
     "url": "https://github.com/firebug/pixel-perfect.git"
   },
   "dependencies": {
-    "firebug.sdk": "0.5.3"
+    "firebug.sdk": "0.5.5"
   },
   "bugs": {
     "url": "https://github.com/firebug/pixel-perfect/issues"
