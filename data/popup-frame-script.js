@@ -55,7 +55,9 @@ function postChromeMessage(type, args, objects) {
  * as it's loaded. This function allows sending messages from the
  * frame's content directly to the chrome scope.
  */
-addEventListener("DOMContentLoaded", event => {
+addEventListener("DOMContentLoaded", function onContentLoaded(event) {
+  removeEventListener("DOMContentLoaded", onContentLoaded, true);
+
   Cu.exportFunction(postChromeMessage, window, {
     defineAs: "postChromeMessage"
   });
