@@ -12,7 +12,8 @@
     "Alistair Laing"
   ],
   "translators": [
-    "YFdyh000 (zh-CN)"
+    "YFdyh000 (zh-CN)",
+    "Maurice Pape (de)"
   ],
   "engines": {
     "firefox": ">=36.0 <=40.0"
