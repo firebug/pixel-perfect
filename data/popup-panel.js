@@ -4,7 +4,7 @@ define(function(require, exports, module) {
 
 // Dependencies
 const React = require("react");
-const { Reps } = require("./reps");
+const { Reps } = require("reps/reps");
 const { LayerList } = require("layer-list");
 const { LayerForm } = require("layer-form");
 const { LayerStore } = require("layer-store");

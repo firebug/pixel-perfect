@@ -4,7 +4,7 @@ define(function(require, exports, module) {
 
 // Dependencies
 const React = require("react");
-const { Reps } = require("./reps");
+const { Reps } = require("reps/reps");
 
 // Shortcuts
 const { TABLE, TR, TD, DIV, IMG, SPAN, BR } = Reps.DOM;
