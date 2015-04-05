@@ -23,7 +23,7 @@ exports["test Add Layer"] = function(assert, done) {
 
       // Clean up
       removeLayer(popup, layer.id).then(() => {
-        config.popup.hide().then(() => {
+        config.popup.destroy().then(() => {
           closeTab(config.tab);
           done();
         });

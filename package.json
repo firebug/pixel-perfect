@@ -1,7 +1,7 @@
 {
   "title": "Pixel Perfect",
   "name": "pixel-perfect",
-  "version": "2.0.0-beta.2",
+  "version": "2.0.5-beta.1",
   "id": "pixelperfectplugin@openhouseconcepts.com",
   "description": "Make your web development Pixel Perfect",
   "main": "index.js",
@@ -11,8 +11,12 @@
     "Lorne Markham",
     "Alistair Laing"
   ],
+  "translators": [
+    "YFdyh000 (zh-CN)",
+    "Maurice Pape (de)"
+  ],
   "engines": {
-    "firefox": ">=36.0"
+    "firefox": ">=36.0 <=40.0"
   },
   "license": "BSD License",
   "icon": "chrome://pixelperfect/skin/logo_32x32.png",
@@ -22,15 +26,20 @@
     "type": "git",
     "url": "https://github.com/firebug/pixel-perfect.git"
   },
+  "dependencies": {
+    "firebug.sdk": "0.5.5"
+  },
   "bugs": {
     "url": "https://github.com/firebug/pixel-perfect/issues"
   },
   "preferences-branch": "pixelperfect",
-  "preferences": [{
-    "name": "firstRun",
-    "title": "Execute first run experience",
-    "description": "Specifies whether to show notification message when the extension is installed or upgraded etc.",
-    "type": "bool",
-    "value": true
-  }]
+  "preferences": [
+    {
+      "name": "firstRun",
+      "title": "Execute first run experience",
+      "description": "Specifies whether to show notification message when the extension is installed or upgraded etc.",
+      "type": "bool",
+      "value": true
+    }
+  ]
 }

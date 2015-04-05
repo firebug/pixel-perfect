@@ -12,3 +12,6 @@
 .jpmignore
 .jshintrc
 .project
+
+# Existing packages
+*.xpi

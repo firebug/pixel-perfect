@@ -6,30 +6,21 @@ Pixel Perfect [![Build Status](https://api.travis-ci.org/firebug/pixel-perfect.p
 Make your web development Pixel Perfect.
 
 * Home Page: https://github.com/firebug/pixel-perfect/wiki
+* Developer Guide: https://github.com/firebug/pixel-perfect/wiki/Developer-Guide
+
+Pixel Perfect is Firefox extension built on top of native developer tools in Firefox.
 
 License
 -------
 PixelPerfect is free and open source software distributed under the
 [BSD License](https://github.com/firebug/pixel-perfect/blob/master/license.txt).
 
-Repository Structure
---------------------
-Structure of the extension follows Jetpack standards.
-
-* **data** HTML pages
-* **chrome** Stylesheets, localization files
-* **lib** Javascript files.
-* **test** Test files
-
 Hacking on Pixel Perfect 2
 --------------------------
-1. Install JPM: `npm install jpm -g` (read more about [installing jpm](https://developer.mozilla.org/en-US/Add-ons/SDK/Tools/jpm#Installation))
-2. Get Pixel Perfect source: `git clone https://github.com/firebug/pixel-perfect.git`
-3. Run `jpm run -b nightly` in the source directory (learn more about [jpm commands](https://developer.mozilla.org/en-US/Add-ons/SDK/Tools/jpm#Command_reference))
+See Pixel Perfect [Developer Guide](https://github.com/firebug/pixel-perfect/wiki/Developer-Guide)
 
 Further Resources
 -----------------
-
 * Add-on SDK: https://developer.mozilla.org/en-US/Add-ons/SDK
 * DevTools API: https://developer.mozilla.org/en-US/docs/Tools/DevToolsAPI
 * Coding Style: https://github.com/mozilla/addon-sdk/wiki/Coding-style-guide

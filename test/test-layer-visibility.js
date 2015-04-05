@@ -6,25 +6,26 @@ const { click, addNewLayer, waitForEvents, removeLayer } = require("./common.js"
 const { closeTab } = require("sdk/tabs/utils");
 
 /**
- * This test is responsible for verifying layer lock option.
- * The user can lock any layer using 'Lock' checkbox that is
- * available in Pixel Perfect popup panel. Locked layers can't
- * be dragged.
+ * This test is responsible for verifying layer's visibility. The user
+ * can set the visibility using a checkbox that is available in Pixel
+ * Perfect popup panel.
  */
-exports["test Layer Lock"] = function(assert, done) {
+exports["test Layer Visibility"] = function(assert, done) {
   addNewLayer().then(config => {
     let popup = config.popup;
     let layer = config.layer;
 
-    // Click on the 'Lock' checkbox.
-    click(popup, "#pixel-perfect-lock");
+    // Click on the visibility checkbox.
+    click(popup, "input.visibility");
 
     // Wait till the layer is modified on the backend.
-    waitForEvents(popup, ["layer-modified"]).then(() => {
+    waitForEvents(popup, ["layer-modified"]).then(result => {
       // Get layer info from the backend.
       popup.front.getLayerInfo(layer.id).then(response => {
-        assert.equal(response.content.box.lock, "true",
-          "The layer must be locked");
+        let style = response.content.box.style;
+        let index = style.indexOf("display:none");
+
+        assert.ok(index > -1, "Layer's image must be hidden at this moment");
 
         // Clean up
         removeLayer(popup, layer.id).then(() => {
