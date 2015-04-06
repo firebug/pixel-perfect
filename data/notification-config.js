@@ -5,6 +5,7 @@ require.config({
   baseUrl: ".",
   paths: {
     "react": "./lib/react/react",
+    "reps": "../../node_modules/firebug.sdk/lib/reps"
   }
 });
 
