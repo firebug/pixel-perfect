@@ -15,7 +15,7 @@ const { TABLE, TR, TD, DIV, IMG, SPAN } = Reps.DOM;
 /**
  * @react This template implements basic layout for the popup panel.
  * There are two components displayed:
- * 1. Layer list: list of all registered layers {@link Layerlist}.
+ * 1. Layer list: list of all registered layers {@link LayerList}.
  * 2. Layer form: a form displaying properties of the selected layer
  * {@link LayerForm}.
  *
