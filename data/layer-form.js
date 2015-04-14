@@ -84,9 +84,9 @@ var LayerForm = React.createClass({
               Locale.$STR("pixelPerfect.label.scale") + ":")
           ),
           TD({colSpan: 2},
-            INPUT({size: 3, value: layer.scale,
+            INPUT({size: 3, value: layer.scale, type: "number", step: "0.1",
               id: "pixel-perfect-scale",
-              onChange: this.onChange.bind(this, "scale", "number")})
+              onChange: this.onChange.bind(this, "scale", "float")})
           )
         ),
         TR({},
@@ -138,6 +138,10 @@ var LayerForm = React.createClass({
       break;
     case "number":
       value = parseInt(event.target.value, 10);
+      break;
+    case "float":
+      var v = event.target.value;
+      value = (v != "0.") ? parseFloat(v, 10) : v;
       break;
     case "string":
       value = event.target.value;
