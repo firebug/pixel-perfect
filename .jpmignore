@@ -15,3 +15,6 @@
 
 # Existing packages
 *.xpi
+
+# Travis
+.travis.yml
