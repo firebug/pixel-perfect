@@ -1,7 +1,7 @@
 {
   "title": "Pixel Perfect",
   "name": "pixel-perfect",
-  "version": "2.0.5-beta.1",
+  "version": "2.0.5",
   "id": "pixelperfectplugin@openhouseconcepts.com",
   "description": "Make your web development Pixel Perfect",
   "main": "index.js",
