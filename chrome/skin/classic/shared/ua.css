@@ -1,25 +1,34 @@
 /* See license.txt for terms of usage */
 
-div:-moz-native-anonymous.moz-custom-content-container {
-  position: absolute;
-}
-
-.pixelperfect-layer-box {
+div:-moz-native-anonymous .pixelperfect-layer-box {
   position: absolute;
   cursor: move;
   pointer-events: auto;
   line-height: 1px;
 }
 
-.pixelperfect-layer-box[drag] {
+div:-moz-native-anonymous .pixelperfect-layer-box[drag] {
   outline: 1px dashed rgb(51, 153, 255);
 }
 
-.pixelperfect-layer-box[lock] {
+div:-moz-native-anonymous .pixelperfect-layer-box[lock] {
   cursor: default;
   pointer-events: none;
 }
 
-.pixelperfect-layer-box[invert] img {
+div:-moz-native-anonymous .pixelperfect-layer-box[invert] img {
   filter: invert(100%);
+}
+
+/* The following two styles are fixing issue #67
+  https://github.com/firebug/pixel-perfect/issues/67
+  They can both be removed as soon as the platform is fixed:
+  https://bugzilla.mozilla.org/show_bug.cgi?id=1168113
+*/
+div:-moz-native-anonymous.moz-custom-content-container {
+  position: absolute;
+}
+
+:-moz-native-anonymous .highlighter-container {
+  position: fixed;
 }
