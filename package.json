@@ -1,7 +1,7 @@
 {
   "title": "Pixel Perfect",
   "name": "pixel-perfect",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "id": "pixelperfectplugin@openhouseconcepts.com",
   "description": "Make your web development Pixel Perfect",
   "main": "index.js",
@@ -9,7 +9,8 @@
   "contributors": [
     "Mike Buckley",
     "Lorne Markham",
-    "Alistair Laing"
+    "Alistair Laing",
+    "Oleksandr Shybystyi"
   ],
   "translators": [
     "YFdyh000 (zh-CN)",
