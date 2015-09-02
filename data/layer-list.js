@@ -158,7 +158,7 @@ var LayerRow = React.createFactory(React.createClass({
 
   render: function() {
     var layer = this.props.layer;
-    var imageUrl = layer.url;
+    var imageUrl = layer.dataUrl;
     var selected = this.props.selected ? " selected" : "";
 
     return (

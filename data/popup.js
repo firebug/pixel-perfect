@@ -35,6 +35,12 @@ window.addEventListener("refresh", event => {
 /**
  * Display the page content when it's ready to avoid flashing
  * during the page load.
+ *
+ * The popup frame has limited privileges (type='content') and
+ * can't access local files directly. Source of all images in the
+ * layer list is set to 'data:' URLs if one of those URLs would
+ * be wrong the document would never finished loading (or after
+ * a long timeout?) and the content would stay empty (collapsed).
  */
 document.addEventListener("load", event => {
   document.body.removeAttribute("collapsed");
