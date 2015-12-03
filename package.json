@@ -1,7 +1,7 @@
 {
   "title": "Pixel Perfect",
   "name": "pixel-perfect",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "id": "pixelperfectplugin@openhouseconcepts.com",
   "description": "Make your web development Pixel Perfect",
   "main": "index.js",
@@ -17,7 +17,7 @@
     "Maurice Pape (de)"
   ],
   "engines": {
-    "firefox": ">=36.0 <=40.0"
+    "firefox": ">=36.0"
   },
   "license": "BSD License",
   "icon": "chrome://pixelperfect/skin/logo_32x32.png",
