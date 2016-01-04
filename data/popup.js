@@ -7,8 +7,7 @@ const React = require("react");
 const { PopupPanel } = require("popup-panel");
 const { LayerStore } = require("layer-store");
 
-// Initial panel content rendering.
-var panel = React.render(PopupPanel(), document.body);
+var panel;
 
 /**
  * Handle refresh events sent from the chrome scope and refresh
@@ -17,6 +16,11 @@ var panel = React.render(PopupPanel(), document.body);
  */
 window.addEventListener("refresh", event => {
   var state = JSON.parse(event.data);
+
+  // Initial panel content rendering.
+  if (!panel) {
+    panel = React.render(PopupPanel(), document.body);
+  }
 
   // Merge new state properties into the current state.
   state.layers = state.layers || panel.state.layers;
