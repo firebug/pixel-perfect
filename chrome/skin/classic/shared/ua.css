@@ -24,9 +24,19 @@ div:-moz-native-anonymous .pixelperfect-layer-box[invert] img {
   https://github.com/firebug/pixel-perfect/issues/67
   They can both be removed as soon as the platform is fixed:
   https://bugzilla.mozilla.org/show_bug.cgi?id=1168113
-*/
+
+  This gets yet more complex since there is currently no
+  CSS way how to avoid fixed position:
+  https://bugzilla.mozilla.org/show_bug.cgi?id=1230508#c26
+  The only way is using 'scroll' events and update position
+  of layers manually.
+
+  The CSS is currently using position: fixed (in addition to
+  the manual scroll-offset calculation). As soon as 'absolute'
+  is supported again it should be removed */
 div:-moz-native-anonymous.moz-custom-content-container {
-  position: absolute;
+  /*position: absolute;*/
+  position: fixed;
 }
 
 :-moz-native-anonymous .highlighter-container {
